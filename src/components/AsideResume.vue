@@ -2,7 +2,7 @@
 	<div>
 		<ImagePreview />
 		<h2 class="text-3xl text-center mb-2 font-semibold">Full Name</h2>
-		<p class="text-black text-2xl text-center mb-2 font-semibold">Frontend Developer</p>
+		<p class="text-slate-900 text-2xl text-center mb-2 font-semibold">Frontend Developer</p>
 		<hr class="my-4 border-slate-500" />
 
 		<div class="flex gap-2 items-center mb-2">

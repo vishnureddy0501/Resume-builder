@@ -1,10 +1,11 @@
 <template>
 	<section class="flex flex-row text-white">
 		<AsideResume class="w-4/12 px-3 bg-slate-600" />
-		<div class="w-8/12 px-3">test2</div>
+		<MainResume class="w-8/12 pl-6 pr-3 text-slate-900" />
 	</section>
 </template>
 
 <script setup>
 import AsideResume from './AsideResume.vue'
+import MainResume from './MainResume.vue';
 </script>
