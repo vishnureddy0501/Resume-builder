@@ -1,6 +1,6 @@
 <template>
 	<TheHeader />
-	<main class="pt-5 2xl:container px-4 m-auto">
+	<main class="py-5 2xl:container px-4 m-auto">
 		<div class="-mx-4 flex flex-row">
 			<TheFormResume class="w-2/6 px-4" />
 			<TheResume class="w-4/6 px-4" />

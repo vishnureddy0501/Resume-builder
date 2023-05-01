@@ -1,11 +1,11 @@
 <template>
 	<div class="mb-6">
 		<h2 class="text-slate-600 text-2xl font-semibold flex items-center gap-1 mb-2">
-			<ClipboardDocumentListIcon class="w-8 h-8" />
-			Experiences
+			<AcademicCapIcon class="w-8 h-8" />
+			Educations
 		</h2>
 		<div
-			v-for="item in experiences"
+			v-for="item in educations"
 			:key="item.id"
 			class="rounded bg-slate-200 p-2 text-justify relative display-hover hover:bg-slate-300 mb-1"
 		>
@@ -14,10 +14,7 @@
 				<XCircleIcon class="w-5 h-5 cursor-pointer fill-slate-100" />
 			</div>
 			<div class="flex justify-between mb-2">
-				<div>
-					<h3 class="text-xl font-semibold">{{ item.title }}</h3>
-					<p class="text-gray-500">{{ item.company }}</p>
-				</div>
+				<h3 class="text-xl font-semibold">{{ item.title }}</h3>
 				<p class="text-gray-500">{{ item.years }}</p>
 			</div>
 			<div>
@@ -29,20 +26,12 @@
 
 <script setup>
 import { PencilSquareIcon, XCircleIcon } from '@heroicons/vue/24/solid'
-import { ClipboardDocumentListIcon } from '@heroicons/vue/24/outline'
+import { AcademicCapIcon } from '@heroicons/vue/24/outline'
 
-const experiences = [
+const educations = [
 	{
 		id: 1,
-		title: 'FrontEnd Developer',
-		company: 'Company Name',
-		years: 'Nov 2020 - Apr 2021',
-		about: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit accusantium blanditiis, pariatur consequuntur cumque, veniam rerum reiciendis modi dignissimos ullam beatae saepe quos delectus ratione ad perferendis veritatis quod ipsa.'
-	},
-	{
-		id: 2,
-		title: 'FrontEnd Developer',
-		company: 'Company Name',
+		title: 'Kozedub',
 		years: 'Nov 2020 - Apr 2021',
 		about: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit accusantium blanditiis, pariatur consequuntur cumque, veniam rerum reiciendis modi dignissimos ullam beatae saepe quos delectus ratione ad perferendis veritatis quod ipsa.'
 	}
