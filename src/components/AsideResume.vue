@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<ImagePreview />
-		<h2 class="text-3xl text-center mb-2 font-semibold">Full Name</h2>
+		<h2 class="text-3xl text-center mb-2 font-semibold">{{ resume.infoStore.infoForm.fullName }}</h2>
 		<p class="text-slate-900 text-2xl text-center mb-2 font-semibold">Frontend Developer</p>
 		<hr class="my-4 border-slate-500" />
 
@@ -65,8 +65,12 @@
 </template>
 
 <script setup>
+import { useResumeStore } from '@/stores/resume.js';
 import { AtSymbolIcon, DevicePhoneMobileIcon, WrenchIcon, LanguageIcon, PuzzlePieceIcon } from '@heroicons/vue/24/solid';
 import ImagePreview from '../components/ImagePreview.vue'
+
+const resume = useResumeStore()
+
 
 const skills = ['Html', 'Css', 'JS'];
 

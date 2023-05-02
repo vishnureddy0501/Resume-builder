@@ -13,7 +13,7 @@
 			>
 		</div>
 
-		<div>
+		<div class="pt-6 pb-2">
 			<InfoForm v-show="resume.tabsStore.currentPage === PAGE_INFO" />
 			<ExperienceForm v-show="resume.tabsStore.currentPage === PAGE_EXPERIENCE" />
 			<ProjectForm v-show="resume.tabsStore.currentPage === PAGE_PROGECT" />
