@@ -2,18 +2,42 @@
 	<div>
 		<ImagePreview />
 		<h2 class="text-3xl text-center mb-2 font-semibold">{{ resume.infoStore.infoForm.fullName }}</h2>
-		<p class="text-slate-900 text-2xl text-center mb-2 font-semibold">Frontend Developer</p>
+		<p class="text-slate-900 text-2xl text-center mb-2 font-semibold">{{ resume.infoStore.infoForm.jobTitle }}</p>
 		<hr class="my-4 border-slate-500" />
 
-		<div class="flex gap-2 items-center mb-2">
+		<div class="flex gap-2 items-center mb-3 leading-4">
 			<DevicePhoneMobileIcon class="w-4 h-4"/>
-			<a href="tel:+380930000000">+3 8(093) 000 0000</a>
+			<a :href="`tel:${resume.infoStore.infoForm.phone}`">{{ resume.infoStore.infoForm.phone }}</a>
 		</div>
-		<div class="flex gap-2 items-center mb-2">
+		<div class="flex gap-2 items-center mb-3 leading-4">
 			<AtSymbolIcon class="w-4 h-4" />
-			<a href="mailto:test@gmail.com">test@gmail.com</a>
+			<a :href="`mailto:${resume.infoStore.infoForm.mail}`">{{ resume.infoStore.infoForm.mail }}</a>
 		</div>
-		<!-- here v-for need for websites -->
+		
+		<ul>
+			<li v-for="(item, inx) in resume.infoStore.infoForm.tags" :key="inx" class="mb-3 leading-4">
+				<a  class="inline-flex gap-1 flex-row items-center" :href="`https://${item}`" target="_blank">
+					<GlobeAltIcon class="w-4 h-4" />
+					{{ item }}
+				</a>
+			</li>
+		</ul>
+		
+		<ul>
+			<li v-for="item in resume.infoStore.infoForm.socialArr" :key="item.value" class="mb-3 leading-4">
+				<a :href="`${item.url}${item.name}`" target="_blank" class="inline-flex gap-1 flex-row items-center">
+					<!-- here Icon components -->
+					<Linkedin class="w-4 h-4 fill-white" v-if="item.value === 'linkedin'" />
+					<Facebook class="w-4 h-4 fill-white" v-if="item.value === 'facebook'" />
+					<Instagram class="w-4 h-4 fill-white" v-if="item.value === 'instagram'" />
+					<Github class="w-4 h-4 fill-white" v-if="item.value === 'github'" />
+					<Behance class="w-4 h-4 fill-white" v-if="item.value === 'behance'" />
+					<Dribbble class="w-4 h-4 fill-white" v-if="item.value === 'dribbble'" />
+					<Twitter class="w-4 h-4 fill-white" v-if="item.value === 'twitter'" />
+					{{ item.name }}
+				</a>
+			</li>
+		</ul>
 		<hr class="my-4 border-slate-500" />
 
 		<div class="flex gap-2 items-center mb-3">
@@ -66,8 +90,17 @@
 
 <script setup>
 import { useResumeStore } from '@/stores/resume.js';
+import { GlobeAltIcon } from '@heroicons/vue/24/outline';
 import { AtSymbolIcon, DevicePhoneMobileIcon, WrenchIcon, LanguageIcon, PuzzlePieceIcon } from '@heroicons/vue/24/solid';
 import ImagePreview from '../components/ImagePreview.vue'
+
+import Linkedin from './icons/Linkedin.vue'
+import Facebook from './icons/Facebook.vue'
+import Instagram from './icons/Instagram.vue'
+import Github from './icons/Github.vue'
+import Behance from './icons/Behance.vue'
+import Dribbble from './icons/Dribbble.vue'
+import Twitter from './icons/Twitter.vue'
 
 const resume = useResumeStore()
 
@@ -80,4 +113,5 @@ const languages = [
 ];
 
 const interests = ['Sport (Running)', 'Video Games', 'GYM'];
+
 </script>

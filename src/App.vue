@@ -2,8 +2,8 @@
 	<TheHeader />
 	<main class="py-5 2xl:container px-4 m-auto">
 		<div class="-mx-4 flex flex-row">
-			<TheFormResume class="w-2/6 px-4" />
-			<TheResume class="w-4/6 px-4" />
+			<TheFormResume class="w-2/6 pl-4 pr-8" />
+			<TheResume class="w-4/6 pr-4" />
 		</div>
 	</main>
 </template>

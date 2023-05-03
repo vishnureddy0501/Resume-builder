@@ -9,13 +9,16 @@
 				<PencilSquareIcon class="w-5 h-5 cursor-pointer fill-slate-100" />
 				<XCircleIcon class="w-5 h-5 cursor-pointer fill-slate-100" />
 			</div>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus repudiandae est tenetur quos maxime deserunt vero aut adipisci, culpa, quasi dolor, ex itaque. Tempora sapiente reprehenderit unde natus praesentium veritatis?
+			{{ resume.infoStore.infoForm.aboutMe }}
 		</div>
 	</div>
 </template>
 
 <script setup>
 import { PencilSquareIcon, XCircleIcon } from '@heroicons/vue/24/solid'
+import { useResumeStore } from '@/stores/resume.js'
+
+const resume = useResumeStore()
 
 </script>
 

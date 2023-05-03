@@ -14,7 +14,7 @@
 				<BriefcaseIcon class="w-5 h-5" />
 				Job Title:
 			</label>
-			<input id="jobTitle" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+			<input v-model="resume.infoStore.infoForm.jobTitle" id="jobTitle" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 		</div>
 
 		<div class="mb-3 flex gap-4">
@@ -23,19 +23,19 @@
 					<PhoneIcon class="w-5 h-5" />
 					Phone:
 				</label>
-				<input id="phone" type="number" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.infoStore.infoForm.phone" id="phone" type="number" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 			<div class="w-full">
 				<label for="email" class="flex gap-1 items-center text-lg font-semibold mb-1">
 					<AtSymbolIcon class="w-5 h-5" />
 					Email:
 				</label>
-				<input id="email" type="email" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.infoStore.infoForm.mail" id="email" type="email" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 		</div>
 
 		<div class="mb-3">
-			<label for="jobTitle" class="flex gap-1 items-center text-lg font-semibold mb-1">
+			<label class="flex gap-1 items-center text-lg font-semibold mb-1">
 				<LinkIcon class="w-5 h-5" />
 				Add your links:
 			</label>
@@ -48,20 +48,20 @@
 		</div>
 
 		<div class="mb-3">
-			<label class="flex gap-1 items-center text-lg font-semibold mb-1">
+			<label for="socials" class="flex gap-1 items-center text-lg font-semibold mb-1">
 				<GlobeAltIcon class="w-5 h-5" />
 				Add your social media:
 			</label>
 			<div class="flex flex-row gap-4 items-center">
 				<div class="w-full">
-					<select class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+					<select v-model="resume.infoStore.infoForm.select" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 						<option selected disabled >Select your social media</option>
-						<option v-for="item in SOCIAL_LIST" :key="item.value">{{ item.text }}</option>
+						<option v-for="item in SOCIAL_LIST" :key="item.value" :value="item.value">{{ item.text }}</option>
 					</select>
 				</div>
 				<div class="w-full relative">
-					<input type="text" class="pl-3 pr-10 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
-					<button class="absolute top-0 right-0 h-full px-2 bg-slate-600 rounded-e">
+					<input v-model="resume.infoStore.infoForm.socialMedia" id="socials" type="text" class="pl-3 pr-10 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+					<button class="absolute top-0 right-0 h-full px-2 bg-slate-600 rounded-e" @click="resume.infoStore.selectedResultLink()">
 						<PlusIcon class="w-5 h-5 fill-white" />
 					</button>
 				</div>
@@ -73,7 +73,7 @@
 				<DocumentTextIcon class="w-5 h-5" />
 				Professional Summary:
 			</label>
-			<textarea class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border h-40 resize-none"></textarea>
+			<textarea v-model="resume.infoStore.infoForm.aboutMe" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border h-40 resize-none"></textarea>
 		</div>
 
 	</div>
