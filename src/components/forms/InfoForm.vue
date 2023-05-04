@@ -71,7 +71,7 @@
 		<div class="mb-3">
 			<label class="flex gap-1 items-center text-lg font-semibold mb-1">
 				<DocumentTextIcon class="w-5 h-5" />
-				Professional Summary:
+				Description:
 			</label>
 			<textarea v-model="resume.infoStore.infoForm.aboutMe" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border h-40 resize-none"></textarea>
 		</div>
