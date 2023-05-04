@@ -89,9 +89,3 @@ import { PlusIcon } from '@heroicons/vue/24/solid';
 const resume = useResumeStore()
 
 </script>
-
-<style>
-.v3ti .v3ti-tag {
-	background: rgb(71,85,105);
-}
-</style>

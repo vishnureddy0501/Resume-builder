@@ -11,3 +11,20 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
 	-moz-appearance: textfield;
 }
+
+body .v3ti {
+	@apply border-slate-600;
+}
+
+body .v3ti .v3ti-tag {
+	/* background: rgb(71,85,105); */
+	@apply bg-slate-600;
+}
+
+body .dp__input {
+	@apply border-slate-600 py-1;
+}
+
+body .dp__input:hover {
+	@apply border-slate-600;
+}
