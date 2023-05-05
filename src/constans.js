@@ -4,8 +4,10 @@ export const PAGE_EXPERIENCE = 'experience'
 export const PAGE_PROGECT = 'project'
 export const PAGE_EDUCATION = 'education'
 export const PAGE_MORE = 'more'
+export const COURSES = 'courses'
 
 export const TAB_ITEMS = [PAGE_INFO, PAGE_EXPERIENCE, PAGE_PROGECT, PAGE_EDUCATION, PAGE_MORE]
+export const EDUCATION_TABS = [PAGE_EDUCATION, COURSES]
 
 export const SOCIAL_LIST = [
 	{ value: 'linkedin', text: 'LinkedIn', url: 'https://www.linkedin.com/in/'},
