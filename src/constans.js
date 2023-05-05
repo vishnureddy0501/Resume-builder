@@ -16,3 +16,12 @@ export const SOCIAL_LIST = [
 	{ value: 'dribbble', text: 'Dribbble', url: 'https://dribbble.com/'},
 	{ value: 'twitter', text: 'Twitter', url: 'https://www.twitter.com/'}
 ]
+
+export const LANGUAGES_LEVEL = [
+	{ value: 'beginner', text: 'Beginner/Elementary' },
+	{ value: 'preIntermediate ', text: 'Pre-Intermediate ' },
+	{ value: 'intermediate ', text: 'Intermediate ' },
+	{ value: 'upperIntermediate', text: 'Upper-Intermediate' },
+	{ value: 'advanced', text: 'Advanced' },
+	{ value: 'fluent', text: 'Fluent' }
+]

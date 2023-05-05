@@ -30,6 +30,10 @@
 			/>
 		</div>
 
+		<div>
+			<button class="global-btn">Add Project</button>
+		</div>
+
 	</div>
 </template>
 
