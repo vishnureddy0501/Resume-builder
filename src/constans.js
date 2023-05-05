@@ -27,3 +27,5 @@ export const LANGUAGES_LEVEL = [
 	{ value: 'advanced', text: 'Advanced' },
 	{ value: 'fluent', text: 'Fluent' }
 ]
+
+export const MONTH_ARRAY = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]

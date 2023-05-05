@@ -5,8 +5,8 @@
 			Experiences
 		</h2>
 		<div
-			v-for="item in experiences"
-			:key="item.id"
+			v-for="(item, index) in resume.experienceStore.experienceForms"
+			:key="index"
 			class="rounded bg-slate-200 p-2 text-justify relative display-hover hover:bg-slate-300 mb-1"
 		>
 			<div class="hidden gap-2 absolute top-2 right-2 bg-slate-500 p-1 rounded display-hover__show">
@@ -15,13 +15,13 @@
 			</div>
 			<div class="flex justify-between mb-2">
 				<div>
-					<h3 class="text-xl font-semibold">{{ item.title }}</h3>
+					<h3 class="text-xl font-semibold">{{ item.role }}</h3>
 					<p class="text-gray-500">{{ item.company }}</p>
 				</div>
-				<p class="text-gray-500">{{ item.years }}</p>
+				<p class="text-gray-500">{{ isShowEndDate(item) }}</p>
 			</div>
 			<div>
-				{{ item.about }}
+				{{ item.description }}
 			</div>
 		</div>
 	</div>
@@ -30,23 +30,18 @@
 <script setup>
 import { PencilSquareIcon, XCircleIcon } from '@heroicons/vue/24/solid'
 import { ClipboardDocumentListIcon } from '@heroicons/vue/24/outline'
+import { useResumeStore } from '@/stores/resume.js'
+import { MONTH_ARRAY } from '../constans'
+console.log(MONTH_ARRAY)
 
-const experiences = [
-	{
-		id: 1,
-		title: 'FrontEnd Developer',
-		company: 'Company Name',
-		years: 'Nov 2020 - Apr 2021',
-		about: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit accusantium blanditiis, pariatur consequuntur cumque, veniam rerum reiciendis modi dignissimos ullam beatae saepe quos delectus ratione ad perferendis veritatis quod ipsa.'
-	},
-	{
-		id: 2,
-		title: 'FrontEnd Developer',
-		company: 'Company Name',
-		years: 'Nov 2020 - Apr 2021',
-		about: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit accusantium blanditiis, pariatur consequuntur cumque, veniam rerum reiciendis modi dignissimos ullam beatae saepe quos delectus ratione ad perferendis veritatis quod ipsa.'
+const resume = useResumeStore()
+
+function isShowEndDate(item) {
+	if (!item.current) {
+		return `${MONTH_ARRAY[item.startDate.month]} ${item.startDate.year} - ${MONTH_ARRAY[item.endDate.month]} ${item.endDate.year}`
 	}
-]
+	return `${MONTH_ARRAY[item.startDate.month]} ${item.startDate.year} - Up to now`
+}
 
 </script>
 

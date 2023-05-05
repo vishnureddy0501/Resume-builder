@@ -27,12 +27,12 @@
 					<VueDatePicker v-model="resume.experienceStore.experienceForm.startDate" month-picker :format-locale="enGB" format="MMMM yyyy" />
 				</div>
 				<div class="w-full">
-					<VueDatePicker v-model="resume.experienceStore.experienceForm.endDate" month-picker :format-locale="enGB" format="MMMM yyyy" v-if="!currentDate" />
+					<VueDatePicker v-model="resume.experienceStore.experienceForm.endDate" month-picker :format-locale="enGB" format="MMMM yyyy" v-if="!resume.experienceStore.currentDate" />
 					<p v-else>Current</p>
 				</div>
 			</div>
 			<div class="flex items-center gap-2">
-				<input v-model="currentDate" id="current" type="checkbox">
+				<input v-model="resume.experienceStore.currentDate" id="current" type="checkbox">
 				<label for="current">Current</label>
 			</div>
 			<!-- <VueDatePicker v-model="date" range multi-calendars :enable-time-picker="false" :format-locale="enGB" format="PP" /> -->
@@ -55,7 +55,6 @@
 
 <script setup>
 import { useResumeStore } from '@/stores/resume.js';
-import { ref } from 'vue'
 import { BuildingOffice2Icon, UserCircleIcon, CalendarIcon, DocumentTextIcon } from '@heroicons/vue/24/outline'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
@@ -71,9 +70,5 @@ const resume = useResumeStore()
 //   const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
 //   date.value = [startDate, endDate];
 // })
-
-
-const currentDate = ref(false)
-
 
 </script>

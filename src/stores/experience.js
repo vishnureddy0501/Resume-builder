@@ -4,6 +4,8 @@ import { defineStore } from 'pinia'
 
 export const useExperienceStore = defineStore('experience', () => {
 
+	const currentDate = ref(false)
+
 	const experienceForms = ref([
 		{
 			role: 'FrontEnd Developer',
@@ -31,11 +33,13 @@ export const useExperienceStore = defineStore('experience', () => {
 		endDate: {
 			month: new Date().getMonth(),
 			year: new Date().getFullYear()
-		}
+		},
+		current: false
 	})
 
 	function addExperienceData() {
-		experienceForms.value.unshift(experienceForm.value)
+		experienceForms.value.unshift({ ...experienceForm.value, current: currentDate.value })
+		// experienceForms.value.unshift(experienceForm.value)
 		experienceForm.value = {
 			role: '',
 			company: '',
@@ -51,5 +55,5 @@ export const useExperienceStore = defineStore('experience', () => {
 		}
 	}
 
-  return { experienceForms, experienceForm, addExperienceData }
+  return { experienceForms, experienceForm, addExperienceData, currentDate }
 })
