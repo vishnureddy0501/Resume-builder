@@ -6,7 +6,7 @@
 				<IdentificationIcon class="w-5 h-5" />
 				Full Name:
 			</label>
-			<input v-model="resume.infoStore.infoForm.fullName" id="name" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+			<input v-model="resume.infoStore.infoForm.fullName" id="name" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your full name">
 		</div>
 
 		<div class="mb-3">
@@ -14,7 +14,7 @@
 				<BriefcaseIcon class="w-5 h-5" />
 				Job Title:
 			</label>
-			<input v-model="resume.infoStore.infoForm.jobTitle" id="jobTitle" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+			<input v-model="resume.infoStore.infoForm.jobTitle" id="jobTitle" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your job title">
 		</div>
 
 		<div class="mb-3 flex gap-4">
@@ -23,14 +23,14 @@
 					<PhoneIcon class="w-5 h-5" />
 					Phone:
 				</label>
-				<input v-model="resume.infoStore.infoForm.phone" id="phone" type="number" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.infoStore.infoForm.phone" id="phone" type="number" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your phone number">
 			</div>
 			<div class="w-full">
 				<label for="email" class="flex gap-1 items-center text-lg font-semibold mb-1">
 					<AtSymbolIcon class="w-5 h-5" />
 					Email:
 				</label>
-				<input v-model="resume.infoStore.infoForm.mail" id="email" type="email" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.infoStore.infoForm.mail" id="email" type="email" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your E-mail">
 			</div>
 		</div>
 
@@ -60,7 +60,7 @@
 					</select>
 				</div>
 				<div class="w-full relative">
-					<input v-model="resume.infoStore.infoForm.socialMedia" id="socials" type="text" class="pl-3 pr-10 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+					<input v-model="resume.infoStore.infoForm.socialMedia" id="socials" type="text" class="pl-3 pr-10 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your pseudo/nickname">
 					<button class="absolute top-0 right-0 h-full px-2 bg-slate-600 rounded-e" @click="resume.infoStore.selectedResultLink()">
 						<PlusIcon class="w-5 h-5 fill-white" />
 					</button>
