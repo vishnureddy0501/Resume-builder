@@ -39,7 +39,6 @@ export const useExperienceStore = defineStore('experience', () => {
 
 	function addExperienceData() {
 		experienceForms.value.unshift({ ...experienceForm.value, current: currentDate.value })
-		// experienceForms.value.unshift(experienceForm.value)
 		experienceForm.value = {
 			role: '',
 			company: '',

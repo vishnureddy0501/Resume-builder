@@ -22,7 +22,7 @@
 				<CalendarIcon class="w-5 h-5" />
 				From - To:
 			</label>
-			<div class="flex flex-row gap-4 items-center">
+			<div class="flex flex-row gap-4 items-center mb-3">
 				<div class="w-full">
 					<VueDatePicker v-model="resume.experienceStore.experienceForm.startDate" month-picker :format-locale="enGB" format="MMMM yyyy" />
 				</div>
@@ -32,8 +32,7 @@
 				</div>
 			</div>
 			<div class="flex items-center gap-2">
-				<input v-model="resume.experienceStore.currentDate" id="current" type="checkbox">
-				<label for="current">Current</label>
+				<MainCheckboxVue id="current" v-model:checked="resume.experienceStore.currentDate" label="Current" />
 			</div>
 			<!-- <VueDatePicker v-model="date" range multi-calendars :enable-time-picker="false" :format-locale="enGB" format="PP" /> -->
 		</div>
@@ -54,6 +53,7 @@
 </template>
 
 <script setup>
+import MainCheckboxVue from '../MainCheckbox.vue'
 import { useResumeStore } from '@/stores/resume.js';
 import { BuildingOffice2Icon, UserCircleIcon, CalendarIcon, DocumentTextIcon } from '@heroicons/vue/24/outline'
 import VueDatePicker from '@vuepic/vue-datepicker'

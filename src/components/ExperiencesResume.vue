@@ -32,7 +32,6 @@ import { PencilSquareIcon, XCircleIcon } from '@heroicons/vue/24/solid'
 import { ClipboardDocumentListIcon } from '@heroicons/vue/24/outline'
 import { useResumeStore } from '@/stores/resume.js'
 import { MONTH_ARRAY } from '../constans'
-console.log(MONTH_ARRAY)
 
 const resume = useResumeStore()
 
