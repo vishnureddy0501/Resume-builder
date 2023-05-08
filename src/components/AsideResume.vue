@@ -28,7 +28,11 @@
 		</ul>
 		
 		<ul>
-			<li v-for="item in resume.infoStore.infoForm.socialArr" :key="item.value" class="mb-3 leading-4">
+			<li v-for="item in resume.infoStore.infoForm.socialArr" :key="item.value" class="mb-3 leading-4 relative display-hover">
+				<XMarkIcon
+					@click="resume.infoStore.removeSocialItem(item)"
+					class="w-4 h-4 cursor-pointer absolute top-0 right-0 hidden display-hover__show"
+				/>
 				<a :href="`${item.url}${item.name}`" target="_blank" class="inline-flex gap-1 flex-row items-center">
 					<!-- here Icon components -->
 					<Linkedin class="w-4 h-4 fill-white" v-if="item.value === 'linkedin'" />

@@ -39,5 +39,12 @@ export const useInfoStore = defineStore('info', () => {
 		}
 	}
 
-  return { infoForm, handleChangeSite, selectedResultLink, removeTag }
+	function removeSocialItem(deleted) {
+		const index = infoForm.value.socialArr.findIndex(exp => exp === deleted)
+		if (index !== -1) {
+			infoForm.value.socialArr.splice(index, 1)
+		}
+	}
+
+  return { infoForm, handleChangeSite, selectedResultLink, removeTag, removeSocialItem }
 })
