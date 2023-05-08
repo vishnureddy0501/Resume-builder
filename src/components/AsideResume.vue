@@ -47,7 +47,7 @@
 
 		<ul>
 			<li
-				v-for="(skill, inx) in skills"
+				v-for="(skill, inx) in resume.moreStore.moreForm.skills"
 				:key="inx"
 				class="font-semibold"
 			>
@@ -62,11 +62,11 @@
 		</div>
 		<ul>
 			<li
-				v-for="(item, inx) in languages"
+				v-for="(item, inx) in resume.moreStore.moreForm.languageArr"
 				:key="inx"
 				class="font-semibold"
 			>
-				{{ item.lang }} <span class="text-sm font-normal">({{ item.skill }})</span>
+				{{ item.name }} <span class="text-sm font-normal">({{ item.text }})</span>
 			</li>
 		</ul>
 		<hr class="my-4 border-slate-500" />
@@ -77,7 +77,7 @@
 		</div>
 		<ul class="mb-5">
 			<li
-				v-for="(item, inx) in interests"
+				v-for="(item, inx) in resume.moreStore.moreForm.interests"
 				:key="inx"
 				class="font-semibold"
 			>
@@ -103,15 +103,5 @@ import Dribbble from './icons/Dribbble.vue'
 import Twitter from './icons/Twitter.vue'
 
 const resume = useResumeStore()
-
-
-const skills = ['Html', 'Css', 'JS'];
-
-const languages = [
-	{ lang: 'Ukrainian', skill: 'Fluent' },
-	{ lang: 'English', skill: 'Beginner' }
-];
-
-const interests = ['Sport (Running)', 'Video Games', 'GYM'];
 
 </script>

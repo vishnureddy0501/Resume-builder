@@ -5,6 +5,7 @@ import { useExperienceStore } from './experience'
 import { useProjectStore } from './project'
 import { useEducationStore } from './education'
 import { useCourseStore } from './courses'
+import { useMoreStore } from './more'
 
 
 export const useResumeStore = defineStore('resume', () => {
@@ -15,6 +16,7 @@ export const useResumeStore = defineStore('resume', () => {
 	const projectStore = useProjectStore()
 	const educationStore = useEducationStore()
 	const courseStore = useCourseStore()
+	const moreStore = useMoreStore()
 
   return {
 		tabsStore,
@@ -22,6 +24,7 @@ export const useResumeStore = defineStore('resume', () => {
 		experienceStore,
 		projectStore,
 		educationStore,
-		courseStore
+		courseStore,
+		moreStore
 	}
 })
