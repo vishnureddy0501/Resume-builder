@@ -1,10 +1,14 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { useTabsStore } from './tabs'
+import { PAGE_EXPERIENCE } from '../constans'
 
 
 export const useExperienceStore = defineStore('experience', () => {
+	const tabs = useTabsStore()
 
 	const currentDate = ref(false)
+	const editData = ref(false)
 
 	const experienceForms = ref([
 		{
@@ -54,5 +58,48 @@ export const useExperienceStore = defineStore('experience', () => {
 		}
 	}
 
-  return { experienceForms, experienceForm, addExperienceData, currentDate }
+	function editExperience(item) {
+		tabs.currentPage = PAGE_EXPERIENCE
+		experienceForm.value = item
+		editData.value = true
+	}
+
+	function updateExperienceData() {
+		const index = experienceForms.value.findIndex(exp => exp === experienceForm.value)
+		if (index !== -1) {
+			experienceForms.value.splice(index, 1, experienceForm.value)
+			experienceForm.value = {
+				role: '',
+				company: '',
+				description: '',
+				startDate: {
+					month: 0,
+					year: 2023
+				},
+				endDate: {
+					month: new Date().getMonth(),
+					year: new Date().getFullYear()
+				}
+			}
+			editData.value = false
+		}
+	}
+
+	function deleteExperienceData(deletedExperience) {
+		const index = experienceForms.value.findIndex(exp => exp === deletedExperience)
+		if (index !== -1) {
+			experienceForms.value.splice(index, 1)
+		}
+	}
+
+  return {
+		experienceForms,
+		experienceForm,
+		addExperienceData,
+		currentDate,
+		editExperience,
+		updateExperienceData,
+		editData,
+		deleteExperienceData
+	}
 })

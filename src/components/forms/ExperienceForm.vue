@@ -46,7 +46,8 @@
 		</div>
 
 		<div>
-			<button class="global-btn" @click="resume.experienceStore.addExperienceData()">Add Experience</button>
+			<button v-if="!resume.experienceStore.editData" class="global-btn" @click="resume.experienceStore.addExperienceData()">Add Experience</button>
+			<button v-else class="global-btn" @click="resume.experienceStore.updateExperienceData()">Edit</button>
 		</div>
 
 	</div>
