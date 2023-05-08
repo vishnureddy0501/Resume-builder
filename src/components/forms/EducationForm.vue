@@ -52,7 +52,7 @@
 					<BuildingLibraryIcon class="w-5 h-5" />
 					School Name:
 				</label>
-				<input id="schoolNameCourse" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.courseStore.courseItem.name" id="schoolNameCourse" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 
 			<div class="mb-3">
@@ -60,7 +60,7 @@
 					<AcademicCapIcon class="w-5 h-5" />
 					Professional development, courses:
 				</label>
-				<input id="course" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.courseStore.courseItem.degree" id="course" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 
 			<div class="mb-3">
@@ -70,10 +70,10 @@
 				</label>
 				<div class="flex flex-row gap-4 items-center">
 					<div class="w-full">
-						<VueDatePicker  month-picker :format-locale="enGB" format="MMMM yyyy" />
+						<VueDatePicker v-model="resume.courseStore.courseItem.startDate" month-picker :format-locale="enGB" format="MMMM yyyy" />
 					</div>
 					<div class="w-full">
-						<VueDatePicker  month-picker :format-locale="enGB" format="MMMM yyyy" />
+						<VueDatePicker v-model="resume.courseStore.courseItem.endDate" month-picker :format-locale="enGB" format="MMMM yyyy" />
 					</div>
 				</div>
 			</div>
@@ -108,7 +108,7 @@ const changeTextForButton = computed(() => {
 })
 
 function onChangeClick()  {
-	return currentTab.value === PAGE_EDUCATION ? resume.educationStore.addEducationData() : console.log('TEST')
+	return currentTab.value === PAGE_EDUCATION ? resume.educationStore.addEducationData() : resume.courseStore.addCourseData()
 }
 
 </script>

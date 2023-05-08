@@ -4,6 +4,7 @@ import { useInfoStore } from './info'
 import { useExperienceStore } from './experience'
 import { useProjectStore } from './project'
 import { useEducationStore } from './education'
+import { useCourseStore } from './courses'
 
 
 export const useResumeStore = defineStore('resume', () => {
@@ -13,12 +14,14 @@ export const useResumeStore = defineStore('resume', () => {
 	const experienceStore = useExperienceStore()
 	const projectStore = useProjectStore()
 	const educationStore = useEducationStore()
+	const courseStore = useCourseStore()
 
   return {
 		tabsStore,
 		infoStore,
 		experienceStore,
 		projectStore,
-		educationStore 
+		educationStore,
+		courseStore
 	}
 })
