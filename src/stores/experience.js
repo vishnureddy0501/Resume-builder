@@ -67,7 +67,7 @@ export const useExperienceStore = defineStore('experience', () => {
 	function updateExperienceData() {
 		const index = experienceForms.value.findIndex(exp => exp === experienceForm.value)
 		if (index !== -1) {
-			experienceForms.value.splice(index, 1, experienceForm.value)
+			experienceForms.value.splice(index, 1, { ...experienceForm.value, current: currentDate.value })
 			experienceForm.value = {
 				role: '',
 				company: '',
@@ -89,6 +89,7 @@ export const useExperienceStore = defineStore('experience', () => {
 		const index = experienceForms.value.findIndex(exp => exp === deletedExperience)
 		if (index !== -1) {
 			experienceForms.value.splice(index, 1)
+			editData.value = false
 		}
 	}
 
