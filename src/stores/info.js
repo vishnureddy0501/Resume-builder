@@ -32,5 +32,12 @@ export const useInfoStore = defineStore('info', () => {
 		infoForm.value.tags = name
 	}
 
-  return { infoForm, handleChangeSite, selectedResultLink }
+	function removeTag(deletedTag) {
+		const index = infoForm.value.tags.findIndex(exp => exp === deletedTag)
+		if (index !== -1) {
+			infoForm.value.tags.splice(index, 1)
+		}
+	}
+
+  return { infoForm, handleChangeSite, selectedResultLink, removeTag }
 })

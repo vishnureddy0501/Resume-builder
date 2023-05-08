@@ -43,6 +43,7 @@
 				:tags="resume.infoStore.infoForm.tags"
         placeholder="Enter your links"
         @on-tags-changed="resume.infoStore.handleChangeSite"
+				@on-remove="resume.infoStore.removeTag"
 				class=" border border-slate-900 rounded w-full focus:outline-none focus:shadow-border"
 			/>
 		</div>

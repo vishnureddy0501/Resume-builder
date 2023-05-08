@@ -21,12 +21,3 @@ import { useResumeStore } from '@/stores/resume.js'
 const resume = useResumeStore()
 
 </script>
-
-<style lang="scss">
-.display-hover {
-
-	&:hover &__show {
-		display: flex;
-	}
-}
-</style>

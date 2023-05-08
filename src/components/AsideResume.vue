@@ -15,7 +15,11 @@
 		</div>
 		
 		<ul>
-			<li v-for="(item, inx) in resume.infoStore.infoForm.tags" :key="inx" class="mb-3 leading-4">
+			<li v-for="(item, inx) in resume.infoStore.infoForm.tags" :key="inx" class="mb-3 leading-4 relative display-hover">
+				<XMarkIcon
+					@click="resume.infoStore.removeTag(item)"
+					class="w-4 h-4 cursor-pointer absolute top-0 right-0 hidden display-hover__show"
+				/>
 				<a  class="inline-flex gap-1 flex-row items-center" :href="`https://${item}`" target="_blank">
 					<GlobeAltIcon class="w-4 h-4" />
 					{{ item }}
@@ -90,7 +94,7 @@
 
 <script setup>
 import { useResumeStore } from '@/stores/resume.js';
-import { GlobeAltIcon } from '@heroicons/vue/24/outline';
+import { GlobeAltIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 import { AtSymbolIcon, DevicePhoneMobileIcon, WrenchIcon, LanguageIcon, PuzzlePieceIcon } from '@heroicons/vue/24/solid';
 import ImagePreview from '../components/ImagePreview.vue'
 
