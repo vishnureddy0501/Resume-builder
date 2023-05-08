@@ -15,10 +15,10 @@
 		</div>
 		
 		<ul>
-			<li v-for="(item, inx) in resume.infoStore.infoForm.tags" :key="inx" class="mb-3 leading-4 relative display-hover">
+			<li v-for="(item, inx) in resume.infoStore.infoForm.tags" :key="inx" class="mb-3 leading-4 relative group">
 				<XMarkIcon
 					@click="resume.infoStore.removeTag(item)"
-					class="w-4 h-4 cursor-pointer absolute top-0 right-0 hidden display-hover__show"
+					class="w-4 h-4 cursor-pointer absolute top-0 right-0 hidden group-hover:block"
 				/>
 				<a  class="inline-flex gap-1 flex-row items-center" :href="`https://${item}`" target="_blank">
 					<GlobeAltIcon class="w-4 h-4" />
@@ -28,10 +28,10 @@
 		</ul>
 		
 		<ul>
-			<li v-for="item in resume.infoStore.infoForm.socialArr" :key="item.value" class="mb-3 leading-4 relative display-hover">
+			<li v-for="item in resume.infoStore.infoForm.socialArr" :key="item.value" class="mb-3 leading-4 relative group">
 				<XMarkIcon
 					@click="resume.infoStore.removeSocialItem(item)"
-					class="w-4 h-4 cursor-pointer absolute top-0 right-0 hidden display-hover__show"
+					class="w-4 h-4 cursor-pointer absolute top-0 right-0 hidden group-hover:block"
 				/>
 				<a :href="`${item.url}${item.name}`" target="_blank" class="inline-flex gap-1 flex-row items-center">
 					<!-- here Icon components -->

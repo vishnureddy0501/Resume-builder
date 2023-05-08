@@ -7,9 +7,9 @@
 		<div
 			v-for="(item, index) in resume.experienceStore.experienceForms"
 			:key="index"
-			class="rounded bg-slate-200 p-2 text-justify relative display-hover hover:bg-slate-300 mb-1"
+			class="rounded bg-slate-200 p-2 text-justify relative group hover:bg-slate-300 mb-1"
 		>
-			<div class="hidden gap-2 absolute top-2 right-2 bg-slate-500 p-1 rounded display-hover__show">
+			<div class="hidden gap-2 absolute top-2 right-2 bg-slate-500 p-1 rounded group-hover:flex">
 				<PencilSquareIcon
 					@click="resume.experienceStore.editExperience(item)"
 					class="w-5 h-5 cursor-pointer fill-slate-100"
@@ -46,12 +46,3 @@ function isShowEndDate(item) {
 }
 
 </script>
-
-<style lang="scss">
-.display-hover {
-
-	&:hover &__show {
-		display: flex;
-	}
-}
-</style>
