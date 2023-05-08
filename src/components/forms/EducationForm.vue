@@ -19,7 +19,7 @@
 					<BuildingLibraryIcon class="w-5 h-5" />
 					School Name:
 				</label>
-				<input id="schoolName" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.educationStore.educationItem.name" id="schoolName" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 
 			<div class="mb-3">
@@ -27,7 +27,7 @@
 					<AcademicCapIcon class="w-5 h-5" />
 					School degree:
 				</label>
-				<input id="school" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.educationStore.educationItem.degree" id="school" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 
 			<div class="mb-3">
@@ -37,10 +37,10 @@
 				</label>
 				<div class="flex flex-row gap-4 items-center">
 					<div class="w-full">
-						<VueDatePicker v-model="monthStart" month-picker :format-locale="enGB" format="MMMM yyyy" />
+						<VueDatePicker v-model="resume.educationStore.educationItem.startDate" month-picker :format-locale="enGB" format="MMMM yyyy" />
 					</div>
 					<div class="w-full">
-						<VueDatePicker v-model="monthEnd" month-picker :format-locale="enGB" format="MMMM yyyy" />
+						<VueDatePicker v-model="resume.educationStore.educationItem.endDate" month-picker :format-locale="enGB" format="MMMM yyyy" />
 					</div>
 				</div>
 			</div>
@@ -70,23 +70,24 @@
 				</label>
 				<div class="flex flex-row gap-4 items-center">
 					<div class="w-full">
-						<VueDatePicker v-model="monthStart" month-picker :format-locale="enGB" format="MMMM yyyy" />
+						<VueDatePicker  month-picker :format-locale="enGB" format="MMMM yyyy" />
 					</div>
 					<div class="w-full">
-						<VueDatePicker v-model="monthEnd" month-picker :format-locale="enGB" format="MMMM yyyy" />
+						<VueDatePicker  month-picker :format-locale="enGB" format="MMMM yyyy" />
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div>
-			<button class="global-btn">{{ changeTextForButton }}</button>
+			<button @click="onChangeClick()" class="global-btn">{{ changeTextForButton }}</button>
 		</div>
 
 	</div>
 </template>
 
 <script setup>
+import { useResumeStore } from '@/stores/resume.js'
 import { ref, computed } from 'vue'
 import { AcademicCapIcon, BuildingLibraryIcon, CalendarIcon } from '@heroicons/vue/24/outline'
 import VueDatePicker from '@vuepic/vue-datepicker'
@@ -94,15 +95,7 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import { enGB } from 'date-fns/locale'
 import { EDUCATION_TABS, COURSES, PAGE_EDUCATION } from '../../constans'
 
-const monthStart = ref({
-  month: 0,
-  year: 2023
-});
-
-const monthEnd= ref({
-  month: new Date().getMonth(),
-  year: new Date().getFullYear()
-});
+const resume = useResumeStore()
 
 const currentTab = ref(PAGE_EDUCATION)
 
@@ -113,5 +106,9 @@ function navigateEducation(tab) {
 const changeTextForButton = computed(() => {
 	return currentTab.value === PAGE_EDUCATION ? 'Add Education' : 'Add Course'
 })
+
+function onChangeClick()  {
+	return currentTab.value === PAGE_EDUCATION ? resume.educationStore.addEducationData() : console.log('TEST')
+}
 
 </script>
