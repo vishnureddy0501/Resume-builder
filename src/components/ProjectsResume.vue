@@ -5,8 +5,8 @@
 			Projects
 		</h2>
 		<div
-			v-for="item in projects"
-			:key="item.id"
+			v-for="(item, index) in resume.projectStore.projectData"
+			:key="index"
 			class="rounded bg-slate-200 p-2 text-justify relative display-hover hover:bg-slate-300 mb-1"
 		>
 			<div class="hidden gap-2 absolute top-2 right-2 bg-slate-500 p-1 rounded display-hover__show">
@@ -15,7 +15,7 @@
 			</div>
 			<h3 class="text-xl font-semibold mb-2">{{ item.project }}</h3>
 			<div>
-				<p class="mb-2">{{ item.about }}</p>
+				<p class="mb-2">{{ item.description }}</p>
 				<ul class="flex flex-wrap gap-2">
 					<li v-for="(badge, i) in item.badges" :key="i" class="px-1 bg-slate-600 rounded text-white"> {{ badge }} </li>
 				</ul>
@@ -25,8 +25,11 @@
 </template>
 
 <script setup>
+import { useResumeStore } from '@/stores/resume.js'
 import { PencilSquareIcon, XCircleIcon } from '@heroicons/vue/24/solid'
 import { BugAntIcon } from '@heroicons/vue/24/outline'
+
+const resume = useResumeStore()
 
 const projects = [
 	{
