@@ -61,11 +61,41 @@ export const useEducationStore = defineStore('education', () => {
 		editData.value = true
 	}
 
+	function updateEducationData() {
+		const index = educationsForm.value.findIndex(exp => exp === educationItem.value)
+		if (index !== -1) {
+			educationsForm.value.splice(index, 1, educationItem.value)
+			educationItem.value = {
+				name: '',
+				degree: '',
+				startDate: {
+					month: 0,
+					year: 2023
+				},
+				endDate: {
+					month: new Date().getMonth(),
+					year: new Date().getFullYear()
+				}
+			}
+			editData.value = false
+		}
+	}
+
+	function deleteEducationData(deletedEducation) {
+		const index = educationsForm.value.findIndex(exp => exp === deletedEducation)
+		if (index !== -1) {
+			educationsForm.value.splice(index, 1)
+			editData.value = false
+		}
+	}
+
   return {
 		educationsForm,
 		educationItem,
 		addEducationData,
 		editData,
-		editEducation
+		editEducation,
+		updateEducationData,
+		deleteEducationData
 	}
 })

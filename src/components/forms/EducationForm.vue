@@ -44,6 +44,11 @@
 					</div>
 				</div>
 			</div>
+
+			<div>
+				<button v-if="!resume.educationStore.editData" @click="resume.educationStore.addEducationData()" class="global-btn">Add Education</button>
+				<button v-else class="global-btn" @click="resume.educationStore.updateEducationData()">Edit</button>
+			</div>
 		</div>
 
 		<div v-else>
@@ -77,10 +82,11 @@
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div>
-			<button @click="resume.tabsStore.onChangeClick()" class="global-btn">{{ resume.tabsStore.changeTextForButton }}</button>
+			<div>
+				<button  class="global-btn">Add Course</button>
+				<button  class="global-btn" >Edit</button>
+			</div>
 		</div>
 
 	</div>

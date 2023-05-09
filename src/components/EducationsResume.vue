@@ -1,5 +1,5 @@
 <template>
-	<div class="mb-6">
+	<div class="mb-6" v-if="resume.educationStore.educationsForm.length > 0">
 		<h2 class="text-slate-600 text-2xl font-semibold flex items-center gap-1 mb-2">
 			<AcademicCapIcon class="w-8 h-8" />
 			Educations
@@ -11,7 +11,7 @@
 		>
 			<div class="hidden gap-2 absolute top-2 right-2 bg-slate-500 p-1 rounded display-hover__show">
 				<PencilSquareIcon class="w-5 h-5 cursor-pointer fill-slate-100" @click="resume.educationStore.editEducation(item)" />
-				<XCircleIcon class="w-5 h-5 cursor-pointer fill-slate-100" />
+				<XCircleIcon class="w-5 h-5 cursor-pointer fill-slate-100" @click="resume.educationStore.deleteEducationData(item)" />
 			</div>
 			<div class="flex justify-between mb-2">
 				<h3 class="text-xl font-semibold">{{ item.name }}</h3>
