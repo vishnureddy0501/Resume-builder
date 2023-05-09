@@ -1,7 +1,7 @@
 <template>
 	<section class="flex flex-row text-white bg-white">
 		<AsideResume class="w-4/12 px-3 bg-slate-600" />
-		<MainResume class="w-8/12 pl-6 pr-3 text-slate-900" />
+		<MainResume class="w-8/12 pl-6 pr-3 pt-8 text-slate-900" />
 	</section>
 </template>
 

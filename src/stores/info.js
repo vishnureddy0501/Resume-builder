@@ -46,5 +46,6 @@ export const useInfoStore = defineStore('info', () => {
 		}
 	}
 
+
   return { infoForm, handleChangeSite, selectedResultLink, removeTag, removeSocialItem }
 })
