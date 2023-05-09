@@ -6,14 +6,14 @@
 				v-for="item in EDUCATION_TABS"
 				:key="item"
 				class="uppercase py-2 px-5 font-semibold bg-slate-200"
-				:class="{ 'pointer-events-none bg-slate-400 text-white': item === currentTab }"
-				@click.prevent="navigateEducation(item)"
+				:class="{ 'pointer-events-none bg-slate-400 text-white': item === resume.tabsStore.currentEducationTab }"
+				@click.prevent="resume.tabsStore.navigateEducation(item)"
 			>
 				{{ item }}
 			</button>
 		</div>
 
-		<div v-if="currentTab === PAGE_EDUCATION">
+		<div v-if="resume.tabsStore.currentEducationTab === PAGE_EDUCATION">
 			<div class="mb-3">
 				<label for="schoolName" class="flex gap-1 items-center text-lg text- font-semibold mb-1">
 					<BuildingLibraryIcon class="w-5 h-5" />
@@ -80,7 +80,7 @@
 		</div>
 
 		<div>
-			<button @click="onChangeClick()" class="global-btn">{{ changeTextForButton }}</button>
+			<button @click="resume.tabsStore.onChangeClick()" class="global-btn">{{ resume.tabsStore.changeTextForButton }}</button>
 		</div>
 
 	</div>
@@ -88,27 +88,12 @@
 
 <script setup>
 import { useResumeStore } from '@/stores/resume.js'
-import { ref, computed } from 'vue'
 import { AcademicCapIcon, BuildingLibraryIcon, CalendarIcon } from '@heroicons/vue/24/outline'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import { enGB } from 'date-fns/locale'
-import { EDUCATION_TABS, COURSES, PAGE_EDUCATION } from '../../constans'
+import { EDUCATION_TABS, PAGE_EDUCATION } from '../../constans'
 
 const resume = useResumeStore()
-
-const currentTab = ref(PAGE_EDUCATION)
-
-function navigateEducation(tab) {
-	currentTab.value = tab
-}
-
-const changeTextForButton = computed(() => {
-	return currentTab.value === PAGE_EDUCATION ? 'Add Education' : 'Add Course'
-})
-
-function onChangeClick()  {
-	return currentTab.value === PAGE_EDUCATION ? resume.educationStore.addEducationData() : resume.courseStore.addCourseData()
-}
 
 </script>

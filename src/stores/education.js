@@ -56,6 +56,7 @@ export const useEducationStore = defineStore('education', () => {
 
 	function editEducation(item) {
 		tabs.currentPage = PAGE_EDUCATION
+		tabs.currentEducationTab = PAGE_EDUCATION
 		educationItem.value = item
 		editData.value = true
 	}
