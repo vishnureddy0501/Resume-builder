@@ -1,8 +1,13 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { useTabsStore } from './tabs'
+import { PAGE_EDUCATION, COURSES } from '../constans'
 
 
 export const useCourseStore = defineStore('course', () => {
+	const tabs = useTabsStore()
+
+	const editData = ref(false)
 
 	const coursesForm = ref([
 		{
@@ -48,5 +53,17 @@ export const useCourseStore = defineStore('course', () => {
 		}
 	}
 
-  return { coursesForm, courseItem, addCourseData }
+	function editCourse(item) {
+		tabs.currentPage = PAGE_EDUCATION
+		tabs.currentEducationTab = COURSES
+		courseItem.value = item
+		editData.value = true
+	}
+
+  return {
+		coursesForm,
+		courseItem,
+		addCourseData,
+		editCourse
+	}
 })
