@@ -31,7 +31,8 @@
 		</div>
 
 		<div>
-			<button class="global-btn" @click="resume.projectStore.addProjectData()">Add Project</button>
+			<button v-if="!resume.projectStore.editData" class="global-btn" @click="resume.projectStore.addProjectData()">Add Project</button>
+			<button v-else class="global-btn" @click="resume.projectStore.updateProjectData()">Edit</button>
 		</div>
 
 	</div>

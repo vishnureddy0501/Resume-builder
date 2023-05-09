@@ -1,9 +1,13 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { useTabsStore } from './tabs'
+import { PAGE_PROGECT } from '../constans'
 
 
 export const useProjectStore = defineStore('project', () => {
+	const tabs = useTabsStore()
 
+	const editData = ref(false)
 	const projectData = ref([
 		{
 			project: 'System Of Hir',
@@ -31,5 +35,41 @@ export const useProjectStore = defineStore('project', () => {
 		projectItem.value.badges = val
 	}
 
-  return { projectData, projectItem, addProjectData, handleChangeTags }
+	function editProject(item) {
+		tabs.currentPage = PAGE_PROGECT
+		projectItem.value = item
+		editData.value = true
+	}
+
+	function updateProjectData() {
+		const index = projectData.value.findIndex(exp => exp === projectItem.value)
+		if (index !== -1) {
+			projectData.value.splice(index, 1, projectItem.value)
+			projectItem.value = {
+				project: '',
+				description: '',
+				badges: []
+			}
+			editData.value = false
+		}
+	}
+
+	function deleteProjectData(deletedProject) {
+		const index = projectData.value.findIndex(exp => exp === deletedProject)
+		if (index !== -1) {
+			projectData.value.splice(index, 1)
+			editData.value = false
+		}
+	}
+
+  return {
+		projectData,
+		projectItem,
+		addProjectData,
+		handleChangeTags,
+		editData,
+		editProject,
+		updateProjectData,
+		deleteProjectData
+	}
 })

@@ -1,5 +1,5 @@
 <template>
-	<div class="mb-6">
+	<div class="mb-6" v-if="resume.projectStore.projectData.length > 0">
 		<h2 class="text-slate-600 text-2xl font-semibold flex items-center gap-1 mb-2">
 			<BugAntIcon class="w-8 h-8" />
 			Projects
@@ -7,11 +7,11 @@
 		<div
 			v-for="(item, index) in resume.projectStore.projectData"
 			:key="index"
-			class="rounded bg-slate-200 p-2 text-justify relative display-hover hover:bg-slate-300 mb-1"
+			class="rounded bg-slate-200 p-2 text-justify relative display-hover hover:bg-slate-300 mb-3"
 		>
 			<div class="hidden gap-2 absolute top-2 right-2 bg-slate-500 p-1 rounded display-hover__show">
-				<PencilSquareIcon class="w-5 h-5 cursor-pointer fill-slate-100" />
-				<XCircleIcon class="w-5 h-5 cursor-pointer fill-slate-100" />
+				<PencilSquareIcon class="w-5 h-5 cursor-pointer fill-slate-100" @click="resume.projectStore.editProject(item)" />
+				<XCircleIcon class="w-5 h-5 cursor-pointer fill-slate-100" @click="resume.projectStore.deleteProjectData(item)" />
 			</div>
 			<h3 class="text-xl font-semibold mb-2">{{ item.project }}</h3>
 			<div>
@@ -30,15 +30,6 @@ import { PencilSquareIcon, XCircleIcon } from '@heroicons/vue/24/solid'
 import { BugAntIcon } from '@heroicons/vue/24/outline'
 
 const resume = useResumeStore()
-
-const projects = [
-	{
-		id: 1,
-		project: 'System Of Hir',
-		about: ' Used Vue.js to implement a job search platform for developers and make it easier for recruiters to find candidates. The main work was carried out on a dashboard for personal accounts of job seekers and employers.',
-		badges: ['vue.js', 'JS', 'SCSS', 'HTML']
-	},
-]
 
 </script>
 
