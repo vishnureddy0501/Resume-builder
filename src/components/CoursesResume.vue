@@ -2,7 +2,7 @@
 	<div class="mb-6">
 		<h2 class="text-slate-600 text-2xl font-semibold flex items-center gap-1 mb-2">
 			<BookOpenIcon class="w-8 h-8" />
-			Cources
+			Courses
 		</h2>
 		<div
 			v-for="(item, index) in resume.courseStore.coursesForm"
