@@ -84,8 +84,8 @@
 			</div>
 
 			<div>
-				<button  class="global-btn">Add Course</button>
-				<button  class="global-btn" >Edit</button>
+				<button v-if="!resume.courseStore.editData" @click="resume.courseStore.addCourseData()" class="global-btn">Add Course</button>
+				<button v-else class="global-btn" @click="resume.courseStore.updateCourseData()">Edit</button>
 			</div>
 		</div>
 

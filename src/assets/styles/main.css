@@ -36,3 +36,16 @@ body .dp__input:hover {
 .display-hover:hover .display-hover__show {
 	display: flex;
 }
+
+.dp__theme_light {
+	--dp-primary-color: rgb(71,85,105);
+}
+
+body .dp__action_select {
+	background: var(--dp-primary-color);
+	color: var(--dp-primary-text-color);
+}
+
+body .dp__action_button {
+	@apply h-auto py-1 px-2;
+}
