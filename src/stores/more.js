@@ -34,5 +34,19 @@ export const useMoreStore = defineStore('more', () => {
 		moreForm.value.language = ''
 	}
 
-  return { moreForm, handleChangeInterests, handleChangeSkills, selectedResultLang }
+	function removeSkill(deleted) {
+		console.log(deleted)
+		const index = moreForm.value.skills.findIndex(skill => skill === deleted)
+		if (index !== -1) {
+			moreForm.value.skills.splice(index, 1)
+		}
+	}
+
+  return {
+		moreForm,
+		handleChangeInterests,
+		handleChangeSkills,
+		selectedResultLang,
+		removeSkill
+	}
 })

@@ -48,7 +48,7 @@
 		</ul>
 		<hr class="my-4 border-slate-500" />
 
-		<div class="flex gap-2 items-center mb-3">
+		<div v-if="resume.moreStore.moreForm.skills.length > 0" class="flex gap-2 items-center mb-3">
 			<WrenchIcon class="w-5 h-5" />
 			<span class="text-xl">Skills</span>
 		</div>
@@ -57,12 +57,16 @@
 			<li
 				v-for="(skill, inx) in resume.moreStore.moreForm.skills"
 				:key="inx"
-				class="font-semibold"
+				class="font-semibold relative group"
 			>
+			<XMarkIcon
+				@click="resume.moreStore.removeSkill(skill)"
+				class="w-4 h-4 cursor-pointer absolute top-1/2 -translate-y-2/4 right-0 hidden group-hover:block"
+			/>
 				{{ skill }}
 			</li>
 		</ul>
-		<hr class="my-4 border-slate-500" />
+		<hr v-if="resume.moreStore.moreForm.skills.length > 0" class="my-4 border-slate-500" />
 
 		<div class="flex gap-2 items-center mb-3">
 			<LanguageIcon class="w-5 h-5" />
