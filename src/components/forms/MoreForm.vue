@@ -45,6 +45,7 @@
 				:tags="resume.moreStore.moreForm.interests"
         placeholder="What are your interests"
         @on-tags-changed="resume.moreStore.handleChangeInterests"
+				@on-remove="resume.infoStore.removeInterest"
 				class=" border border-slate-900 rounded w-full focus:outline-none focus:shadow-border"
 			/>
 		</div>

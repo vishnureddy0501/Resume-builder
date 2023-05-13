@@ -42,11 +42,20 @@ export const useMoreStore = defineStore('more', () => {
 		}
 	}
 
+	function removeInterest(deleted) {
+		console.log(deleted)
+		const index = moreForm.value.interests.findIndex(int => int === deleted)
+		if (index !== -1) {
+			moreForm.value.interests.splice(index, 1)
+		}
+	}
+
   return {
 		moreForm,
 		handleChangeInterests,
 		handleChangeSkills,
 		selectedResultLang,
-		removeSkill
+		removeSkill,
+		removeInterest
 	}
 })
