@@ -6,7 +6,7 @@
 				<IdentificationIcon class="w-5 h-5" />
 				Project name:
 			</label>
-			<input v-model="resume.projectStore.projectItem.project" id="projectName" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+			<input v-model="resume.projectStore.projectItem.project" placeholder="Project name" id="projectName" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 		</div>
 
 		<div class="mb-3">
@@ -14,7 +14,7 @@
 				<DocumentTextIcon class="w-5 h-5" />
 				Description:
 			</label>
-			<textarea v-model="resume.projectStore.projectItem.description" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border h-40 resize-none"></textarea>
+			<textarea v-model="resume.projectStore.projectItem.description" placeholder="Description of the project, what technologies were used" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border h-40 resize-none"></textarea>
 		</div>
 
 		<div class="mb-3">

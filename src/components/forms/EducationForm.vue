@@ -19,7 +19,7 @@
 					<BuildingLibraryIcon class="w-5 h-5" />
 					School Name:
 				</label>
-				<input v-model="resume.educationStore.educationItem.name" id="schoolName" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.educationStore.educationItem.name" placeholder="School name" id="schoolName" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 
 			<div class="mb-3">
@@ -27,7 +27,7 @@
 					<AcademicCapIcon class="w-5 h-5" />
 					School degree:
 				</label>
-				<input v-model="resume.educationStore.educationItem.degree" id="school" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.educationStore.educationItem.degree" placeholder="School degree" id="school" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 
 			<div class="mb-3">
@@ -57,7 +57,7 @@
 					<BuildingLibraryIcon class="w-5 h-5" />
 					School Name:
 				</label>
-				<input v-model="resume.courseStore.courseItem.name" id="schoolNameCourse" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.courseStore.courseItem.name" placeholder="School name" id="schoolNameCourse" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 
 			<div class="mb-3">
@@ -65,7 +65,7 @@
 					<AcademicCapIcon class="w-5 h-5" />
 					Professional development, courses:
 				</label>
-				<input v-model="resume.courseStore.courseItem.degree" id="course" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+				<input v-model="resume.courseStore.courseItem.degree" placeholder="Your courses" id="course" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 			</div>
 
 			<div class="mb-3">

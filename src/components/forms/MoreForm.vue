@@ -28,7 +28,7 @@
 					</select>
 				</div>
 				<div class="w-full relative">
-					<input v-model="resume.moreStore.moreForm.language" id="language" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+					<input v-model="resume.moreStore.moreForm.language" placeholder="Language" id="language" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
 					<button @click="resume.moreStore.selectedResultLang()" class="absolute top-0 right-0 h-full px-2 bg-slate-600 rounded-e">
 						<PlusIcon class="w-5 h-5 fill-white text-white" />
 					</button>
