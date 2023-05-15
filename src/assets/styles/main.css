@@ -49,3 +49,7 @@ body .dp__action_select {
 body .dp__action_button {
 	@apply h-auto py-1 px-2;
 }
+
+.basic-input {
+	@apply border border-slate-900 rounded w-full focus:outline-none focus:shadow-border;
+}

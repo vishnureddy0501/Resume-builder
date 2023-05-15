@@ -7,7 +7,7 @@
 
 		<div class="flex gap-2 items-center mb-3 leading-4">
 			<DevicePhoneMobileIcon class="w-4 h-4"/>
-			<a :href="`tel:${resume.infoStore.infoForm.phone}`">{{ resume.infoStore.infoForm.phone }}</a>
+			<a :href="`tel:+${resume.infoStore.infoForm.phone}`">+{{ formatNumber() }}</a>
 		</div>
 		<div class="flex gap-2 items-center mb-3 leading-4">
 			<AtSymbolIcon class="w-4 h-4" />
@@ -123,5 +123,13 @@ import Dribbble from './icons/Dribbble.vue'
 import Twitter from './icons/Twitter.vue'
 
 const resume = useResumeStore()
+
+function formatNumber() {
+	let formattedNumber = resume.infoStore.infoForm.phone.substring(0, 2) + " " +
+  resume.infoStore.infoForm.phone.substring(2, 5) + " " +
+  resume.infoStore.infoForm.phone.substring(5, 8) + " " +
+  resume.infoStore.infoForm.phone.substring(8);
+	return formattedNumber
+}
 
 </script>

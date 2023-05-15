@@ -6,7 +6,10 @@
 				<IdentificationIcon class="w-5 h-5" />
 				Full Name:
 			</label>
-			<input v-model="resume.infoStore.infoForm.fullName" id="name" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your full name">
+			<input v-model="resume.infoStore.infoForm.fullName" @blur="onChangeInput" id="name" type="text" class="basic-input px-3 py-1" placeholder="Your full name" />
+			<span v-for="error in v$.fullName.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+				{{ error.$message }}
+			</span>
 		</div>
 
 		<div class="mb-3">
@@ -14,7 +17,10 @@
 				<BriefcaseIcon class="w-5 h-5" />
 				Job Title:
 			</label>
-			<input v-model="resume.infoStore.infoForm.jobTitle" id="jobTitle" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your job title">
+			<input v-model="resume.infoStore.infoForm.jobTitle" @blur="onChangeInput" id="jobTitle" type="text" class="basic-input px-3 py-1" placeholder="Your job title">
+			<span v-for="error in v$.jobTitle.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+				{{ error.$message }}
+			</span>
 		</div>
 
 		<div class="mb-3 flex gap-4">
@@ -23,14 +29,20 @@
 					<PhoneIcon class="w-5 h-5" />
 					Phone:
 				</label>
-				<input v-model="resume.infoStore.infoForm.phone" id="phone" type="number" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your phone number">
+				<input v-model="resume.infoStore.infoForm.phone" @blur="onChangeInput" id="phone" type="text" class="basic-input px-3 py-1" placeholder="Your phone number">
+				<span v-for="error in v$.phone.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+					{{ error.$message }}
+				</span>
 			</div>
 			<div class="w-full">
 				<label for="email" class="flex gap-1 items-center text-lg font-semibold mb-1">
 					<AtSymbolIcon class="w-5 h-5" />
 					Email:
 				</label>
-				<input v-model="resume.infoStore.infoForm.mail" id="email" type="email" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your E-mail">
+				<input v-model="resume.infoStore.infoForm.mail" @blur="onChangeInput" id="email" type="email" class="basic-input px-3 py-1" placeholder="Your E-mail">
+				<span v-for="error in v$.mail.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+					{{ error.$message }}
+				</span>
 			</div>
 		</div>
 
@@ -55,16 +67,21 @@
 			</label>
 			<div class="flex flex-row gap-4 items-center">
 				<div class="w-full">
-					<select v-model="resume.infoStore.infoForm.select" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+					<select v-model="resume.infoStore.infoForm.select" class="basic-input px-3 py-1">
 						<option selected disabled >Select your social media</option>
 						<option v-for="item in SOCIAL_LIST" :key="item.value" :value="item.value">{{ item.text }}</option>
 					</select>
 				</div>
 				<div class="w-full relative">
-					<input v-model="resume.infoStore.infoForm.socialMedia" id="socials" type="text" class="pl-3 pr-10 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border" placeholder="Your pseudo/nickname">
-					<button class="absolute top-0 right-0 h-full px-2 bg-slate-600 rounded-e" @click="resume.infoStore.selectedResultLink()">
-						<PlusIcon class="w-5 h-5 fill-white" />
-					</button>
+					<div class="relative">
+						<input v-model="resume.infoStore.infoForm.socialMedia" id="socials" type="text" class="pl-3 pr-10 py-1 basic-input" placeholder="Your pseudo/nickname">
+						<button class="absolute top-0 right-0 h-full px-2 bg-slate-600 rounded-e" @click="onSubmit()">
+							<PlusIcon class="w-5 h-5 fill-white" />
+						</button>
+					</div>
+					<span v-for="error in t$.socialMedia.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3 absolute -bottom-4 left-0">
+						{{ error.$message }}
+					</span>
 				</div>
 			</div>
 		</div>
@@ -74,19 +91,52 @@
 				<DocumentTextIcon class="w-5 h-5" />
 				Description:
 			</label>
-			<textarea v-model="resume.infoStore.infoForm.aboutMe" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border h-40 resize-none"></textarea>
+			<textarea v-model="resume.infoStore.infoForm.aboutMe" @blur="onChangeInput" class="basic-input px-3 py-1 h-40 resize-none"></textarea>
+			<span v-for="error in v$.aboutMe.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+				{{ error.$message }}
+			</span>
 		</div>
 
 	</div>
 </template>
 
 <script setup>
-import { IdentificationIcon, BriefcaseIcon, PhoneIcon, AtSymbolIcon, LinkIcon, GlobeAltIcon, DocumentTextIcon } from '@heroicons/vue/24/outline';
-import { useResumeStore } from '@/stores/resume.js';
-import Vue3TagsInput from 'vue3-tags-input';
+import { IdentificationIcon, BriefcaseIcon, PhoneIcon, AtSymbolIcon, LinkIcon, GlobeAltIcon, DocumentTextIcon } from '@heroicons/vue/24/outline'
+import { useResumeStore } from '@/stores/resume.js'
+import Vue3TagsInput from 'vue3-tags-input'
 import { SOCIAL_LIST } from '@/constans'
-import { PlusIcon } from '@heroicons/vue/24/solid';
+import { PlusIcon } from '@heroicons/vue/24/solid'
+import { useVuelidate } from '@vuelidate/core'
+import { required, email, numeric } from '@vuelidate/validators'
 
 const resume = useResumeStore()
+
+
+const rules = {
+	fullName: { required },
+	jobTitle: { required },
+	mail: { required, email },
+	phone: { required, numeric },
+	aboutMe: { required }
+}
+
+const t$ = useVuelidate({ socialMedia: { required } }, resume.infoStore.infoForm)
+const v$ = useVuelidate(rules, resume.infoStore.infoForm)
+
+const onChangeInput = async() => {
+	const result = await v$.value.$validate()
+	return result
+}
+
+const onSubmit = async() => {
+	const result = await t$.value.$validate()
+	if(!result) {
+		return
+	} else {
+		resume.infoStore.selectedResultLink()
+		t$.value.$reset()
+	}
+}
+
 
 </script>
