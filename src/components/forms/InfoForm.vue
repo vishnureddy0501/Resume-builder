@@ -29,7 +29,7 @@
 					<PhoneIcon class="w-5 h-5" />
 					Phone:
 				</label>
-				<input v-model="resume.infoStore.infoForm.phone" @blur="onChangeInput" id="phone" type="text" class="basic-input px-3 py-1" placeholder="Your phone number">
+				<input v-model="resume.infoStore.infoForm.phone" @blur="onChangeInput" id="phone" type="number" class="basic-input px-3 py-1" placeholder="Your phone number">
 				<span v-for="error in v$.phone.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
 					{{ error.$message }}
 				</span>
@@ -65,21 +65,24 @@
 				<GlobeAltIcon class="w-5 h-5" />
 				Add your social media:
 			</label>
-			<div class="flex flex-row gap-4 items-center">
+			<div class="flex flex-row gap-4">
 				<div class="w-full">
 					<select v-model="resume.infoStore.infoForm.select" class="basic-input px-3 py-1">
-						<option selected disabled >Select your social media</option>
-						<option v-for="item in SOCIAL_LIST" :key="item.value" :value="item.value">{{ item.text }}</option>
+						<!-- <option selected disabled value="null"></option> -->
+						<option v-for="item in SOCIAL_LIST" :key="item.value" :value="item.value" :disabled="item.disabled">{{ item.text }}</option>
 					</select>
+					<span v-for="error in t$.select.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+						{{ error.$message }}
+					</span>
 				</div>
-				<div class="w-full relative">
+				<div class="w-full">
 					<div class="relative">
 						<input v-model="resume.infoStore.infoForm.socialMedia" id="socials" type="text" class="pl-3 pr-10 py-1 basic-input" placeholder="Your pseudo/nickname">
 						<button class="absolute top-0 right-0 h-full px-2 bg-slate-600 rounded-e" @click="onSubmit()">
 							<PlusIcon class="w-5 h-5 fill-white" />
 						</button>
 					</div>
-					<span v-for="error in t$.socialMedia.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3 absolute -bottom-4 left-0">
+					<span v-for="error in t$.socialMedia.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
 						{{ error.$message }}
 					</span>
 				</div>
@@ -91,7 +94,7 @@
 				<DocumentTextIcon class="w-5 h-5" />
 				Description:
 			</label>
-			<textarea v-model="resume.infoStore.infoForm.aboutMe" @blur="onChangeInput" class="basic-input px-3 py-1 h-40 resize-none"></textarea>
+			<textarea v-model="resume.infoStore.infoForm.aboutMe" class="basic-input px-3 py-1 h-40 resize-none"></textarea>
 			<span v-for="error in v$.aboutMe.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
 				{{ error.$message }}
 			</span>
@@ -120,7 +123,13 @@ const rules = {
 	aboutMe: { required }
 }
 
-const t$ = useVuelidate({ socialMedia: { required } }, resume.infoStore.infoForm)
+const ruleSelect = {
+	socialMedia: { required },
+	select: { required }
+}
+console.log(resume.infoStore.infoForm.select)
+
+const t$ = useVuelidate(ruleSelect, resume.infoStore.infoForm)
 const v$ = useVuelidate(rules, resume.infoStore.infoForm)
 
 const onChangeInput = async() => {

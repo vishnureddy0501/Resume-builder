@@ -11,7 +11,7 @@ export const useInfoStore = defineStore('info', () => {
 		phone: '380930001122',
 		mail: 'test@gmail.com',
 		tags: ['secondsite.com'],
-		select: 'Select your social media',
+		select: null,
 		socialMedia: '',
 		socialArr: [],
 		aboutMe: 'I am a passionate Front-End developer with 1 year of	experience. I have worked with HTML 5, CSS 3, JavaScript. I have a good communication skills, and the ability to work	both independently and as part of a team. I am highly motivated to deliver a valuable product and I am looking for new challenges.'

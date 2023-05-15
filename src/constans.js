@@ -10,6 +10,7 @@ export const TAB_ITEMS = [PAGE_INFO, PAGE_EXPERIENCE, PAGE_PROGECT, PAGE_EDUCATI
 export const EDUCATION_TABS = [PAGE_EDUCATION, COURSES]
 
 export const SOCIAL_LIST = [
+	{ value: null, text: 'Select your social', disabled: true },
 	{ value: 'linkedin', text: 'LinkedIn', url: 'https://www.linkedin.com/in/'},
 	{ value: 'facebook', text: 'Facebook', url: 'https://www.facebook.com/'},
 	{ value: 'instagram', text: 'Instagram', url: 'https://www.instagram.com/'},
