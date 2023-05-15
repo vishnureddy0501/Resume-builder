@@ -5,11 +5,11 @@
 		<p class="text-slate-900 text-2xl text-center mb-2 font-semibold">{{ resume.infoStore.infoForm.jobTitle }}</p>
 		<hr class="my-4 border-slate-500" />
 
-		<div class="flex gap-2 items-center mb-3 leading-4">
+		<div v-if="resume.infoStore.infoForm.phone.length > 0" class="flex gap-2 items-center mb-3 leading-4">
 			<DevicePhoneMobileIcon class="w-4 h-4"/>
 			<a :href="`tel:+${resume.infoStore.infoForm.phone}`">+{{ formatNumber() }}</a>
 		</div>
-		<div class="flex gap-2 items-center mb-3 leading-4">
+		<div v-if="resume.infoStore.infoForm.mail.length > 0" class="flex gap-2 items-center mb-3 leading-4">
 			<AtSymbolIcon class="w-4 h-4" />
 			<a :href="`mailto:${resume.infoStore.infoForm.mail}`">{{ resume.infoStore.infoForm.mail }}</a>
 		</div>
