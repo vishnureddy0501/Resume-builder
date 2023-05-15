@@ -68,7 +68,7 @@
 		</ul>
 		<hr v-if="resume.moreStore.moreForm.skills.length > 0" class="my-4 border-slate-500" />
 
-		<div class="flex gap-2 items-center mb-3">
+		<div v-if="resume.moreStore.moreForm.languageArr.length > 0" class="flex gap-2 items-center mb-3">
 			<LanguageIcon class="w-5 h-5" />
 			<span class="text-xl">Languages</span>
 		</div>
@@ -76,12 +76,16 @@
 			<li
 				v-for="(item, inx) in resume.moreStore.moreForm.languageArr"
 				:key="inx"
-				class="font-semibold"
+				class="font-semibold relative group"
 			>
+			<XMarkIcon
+				@click="resume.moreStore.removeLang(item)"
+				class="w-4 h-4 cursor-pointer absolute top-1/2 -translate-y-2/4 right-0 hidden group-hover:block"
+			/>
 				{{ item.name }} <span class="text-sm font-normal">({{ item.text }})</span>
 			</li>
 		</ul>
-		<hr class="my-4 border-slate-500" />
+		<hr class="my-4 border-slate-500" v-if="resume.moreStore.moreForm.languageArr.length > 0" />
 
 		<div v-if="resume.moreStore.moreForm.interests.length > 0" class="flex gap-2 items-center mb-3">
 			<PuzzlePieceIcon class="w-5 h-5" />

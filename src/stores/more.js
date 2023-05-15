@@ -35,7 +35,6 @@ export const useMoreStore = defineStore('more', () => {
 	}
 
 	function removeSkill(deleted) {
-		console.log(deleted)
 		const index = moreForm.value.skills.findIndex(skill => skill === deleted)
 		if (index !== -1) {
 			moreForm.value.skills.splice(index, 1)
@@ -43,10 +42,16 @@ export const useMoreStore = defineStore('more', () => {
 	}
 
 	function removeInterest(deleted) {
-		console.log(deleted)
 		const index = moreForm.value.interests.findIndex(int => int === deleted)
 		if (index !== -1) {
 			moreForm.value.interests.splice(index, 1)
+		}
+	}
+
+	function removeLang(deleted) {
+		const index = moreForm.value.languageArr.findIndex(lang => lang === deleted)
+		if (index !== -1) {
+			moreForm.value.languageArr.splice(index, 1)
 		}
 	}
 
@@ -56,6 +61,7 @@ export const useMoreStore = defineStore('more', () => {
 		handleChangeSkills,
 		selectedResultLang,
 		removeSkill,
-		removeInterest
+		removeInterest,
+		removeLang
 	}
 })
