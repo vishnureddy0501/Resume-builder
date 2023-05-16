@@ -29,7 +29,7 @@
 					<PhoneIcon class="w-5 h-5" />
 					Phone:
 				</label>
-				<input v-model="resume.infoStore.infoForm.phone" @blur="onChangeInput" id="phone" type="number" class="basic-input px-3 py-1" placeholder="Your phone number">
+				<input v-model="resume.infoStore.infoForm.phone" @blur="onChangeInput" id="phone" type="text" class="basic-input px-3 py-1" placeholder="Your phone number">
 				<span v-for="error in v$.phone.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
 					{{ error.$message }}
 				</span>
@@ -127,7 +127,6 @@ const ruleSelect = {
 	socialMedia: { required },
 	select: { required }
 }
-console.log(resume.infoStore.infoForm.select)
 
 const t$ = useVuelidate(ruleSelect, resume.infoStore.infoForm)
 const v$ = useVuelidate(rules, resume.infoStore.infoForm)
