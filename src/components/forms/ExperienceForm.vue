@@ -75,8 +75,9 @@ import { required } from '@vuelidate/validators'
 
 const resume = useResumeStore()
 
+
 // validation
-const rules = computed(() => {
+const rulesExperience = computed(() => {
 	return {
 		role: { required },
 		company: { required },
@@ -84,10 +85,8 @@ const rules = computed(() => {
 	}
 })
 
-const v$ = useVuelidate(rules, resume.experienceStore.experienceForm)
+const v$ = useVuelidate(rulesExperience, resume.experienceStore.experienceForm)
 
-console.log(v$)
-// NEED TO FIX FUCKING BUG
 
 const onChangeExpierence = async() => {
 	const result = await v$.value.$validate()
@@ -99,10 +98,7 @@ const onChangeExpierence = async() => {
 
 const onEditExpierence = async() => {
 	const result = await v$.value.$validate()
-	console.log(v$)
-	if(!result) {
-		return
-	} else {
+	if(result) {
 		resume.experienceStore.updateExperienceData()
 		v$.value.$reset()
 	}
@@ -117,7 +113,5 @@ const onEditExpierence = async() => {
 //   const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
 //   date.value = [startDate, endDate];
 // })
-
-
 
 </script>

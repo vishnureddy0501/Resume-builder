@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { useTabsStore } from './tabs'
 import { PAGE_EXPERIENCE } from '../constans'
@@ -10,8 +10,9 @@ export const useExperienceStore = defineStore('experience', () => {
 	const currentDate = ref(false)
 	const editData = ref(false)
 
-	const experienceForms = ref([
+	const experienceForms = reactive([
 		{
+			id: 1,
 			role: 'FrontEnd Developer',
 			company: 'Company Name',
 			description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit accusantium blanditiis, pariatur consequuntur cumque, veniam rerum reiciendis modi dignissimos ullam beatae saepe quos delectus ratione ad perferendis veritatis quod ipsa.',
@@ -26,7 +27,8 @@ export const useExperienceStore = defineStore('experience', () => {
 		}
 	]);
 
-	const experienceForm = ref({
+	const experienceForm = reactive({
+		id:  Date.now(),
 		role: '',
 		company: '',
 		description: '',
@@ -42,56 +44,55 @@ export const useExperienceStore = defineStore('experience', () => {
 	})
 
 	function addExperienceData() {
-		experienceForms.value.unshift({ ...experienceForm.value, current: currentDate.value })
-		experienceForm.value = {
-			role: '',
-			company: '',
-			description: '',
-			startDate: {
-				month: 0,
-				year: 2023
-			},
-			endDate: {
-				month: new Date().getMonth(),
-				year: new Date().getFullYear()
-			}
-		}
-	}
+    experienceForms.unshift({ ...experienceForm, current: currentDate.value });
+    clearExperienceForm();
+  }
 
 	function editExperience(item) {
-		tabs.currentPage = PAGE_EXPERIENCE
-		experienceForm.value = item
-		editData.value = true
-	}
+    tabs.currentPage = PAGE_EXPERIENCE;
+    experienceForm.id = item.id;
+    experienceForm.role = item.role;
+    experienceForm.company = item.company;
+    experienceForm.description = item.description;
+    experienceForm.startDate.month = item.startDate.month;
+    experienceForm.startDate.year = item.startDate.year;
+    experienceForm.endDate.month = item.endDate.month;
+    experienceForm.endDate.year = item.endDate.year;
+    experienceForm.current = item.endDate.month === 0 && item.endDate.year === 0;
+    editData.value = true;
+  }
 
 	function updateExperienceData() {
-		const index = experienceForms.value.findIndex(exp => exp === experienceForm.value)
+    const index = experienceForms.findIndex(exp => exp.id === experienceForm.id);
+    if (index !== -1) {
+      experienceForms.splice(index, 1, {
+        ...experienceForm,
+        current: currentDate.value
+      });
+      clearExperienceForm();
+      editData.value = false;
+    }
+  }
+
+	function deleteExperienceData(deletedExperience) {
+		const index = experienceForms.findIndex(exp => exp === deletedExperience)
 		if (index !== -1) {
-			experienceForms.value.splice(index, 1, { ...experienceForm.value, current: currentDate.value })
-			experienceForm.value = {
-				role: '',
-				company: '',
-				description: '',
-				startDate: {
-					month: 0,
-					year: 2023
-				},
-				endDate: {
-					month: new Date().getMonth(),
-					year: new Date().getFullYear()
-				}
-			}
+			experienceForms.splice(index, 1)
 			editData.value = false
 		}
 	}
 
-	function deleteExperienceData(deletedExperience) {
-		const index = experienceForms.value.findIndex(exp => exp === deletedExperience)
-		if (index !== -1) {
-			experienceForms.value.splice(index, 1)
-			editData.value = false
-		}
-	}
+	function clearExperienceForm() {
+    experienceForm.id = Date.now();
+    experienceForm.role = '';
+    experienceForm.company = '';
+    experienceForm.description = '';
+    experienceForm.startDate.month = 0;
+    experienceForm.startDate.year = 2023;
+    experienceForm.endDate.month = new Date().getMonth();
+    experienceForm.endDate.year = new Date().getFullYear();
+    experienceForm.current = false;
+  }
 
   return {
 		experienceForms,
