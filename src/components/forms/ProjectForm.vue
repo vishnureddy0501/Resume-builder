@@ -6,7 +6,10 @@
 				<IdentificationIcon class="w-5 h-5" />
 				Project name:
 			</label>
-			<input v-model="resume.projectStore.projectItem.project" placeholder="Project name" id="projectName" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+			<input v-model="resume.projectStore.projectItem.project" placeholder="Project name" id="projectName" type="text" class="px-3 py-1 basic-input">
+			<span v-for="error in v$.project.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+				{{ error.$message }}
+			</span>
 		</div>
 
 		<div class="mb-3">
@@ -14,7 +17,10 @@
 				<DocumentTextIcon class="w-5 h-5" />
 				Description:
 			</label>
-			<textarea v-model="resume.projectStore.projectItem.description" placeholder="Description of the project, what technologies were used" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border h-40 resize-none"></textarea>
+			<textarea v-model="resume.projectStore.projectItem.description" placeholder="Description of the project, what technologies were used" class="px-3 py-1 basic-input h-40 resize-none"></textarea>
+			<span v-for="error in v$.description.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+				{{ error.$message }}
+			</span>
 		</div>
 
 		<div class="mb-3">
@@ -26,28 +32,51 @@
 				:tags="resume.projectStore.projectItem.badges"
         placeholder="For example: html, css, js ets"
         @on-tags-changed="resume.projectStore.handleChangeTags"
-				class=" border border-slate-900 rounded w-full focus:outline-none focus:shadow-border"
+				class="basic-input"
 			/>
 		</div>
 
 		<div>
-			<button v-if="!resume.projectStore.editData" class="global-btn" @click="resume.projectStore.addProjectData()">Add Project</button>
-			<button v-else class="global-btn" @click="resume.projectStore.updateProjectData()">Edit</button>
+			<button v-if="!resume.projectStore.editData" class="global-btn" @click="onAddProject()">Add Project</button>
+			<button v-else class="global-btn" @click="onEditProject()">Edit</button>
 		</div>
 
 	</div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useResumeStore } from '@/stores/resume.js'
 import { IdentificationIcon, DocumentTextIcon, HashtagIcon } from '@heroicons/vue/24/outline'
 import Vue3TagsInput from 'vue3-tags-input'
+import { useVuelidate } from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
 
 const resume = useResumeStore()
 
-// const tags = ref([])
+// validation
+const rules = computed(() => {
+	return {
+		project: { required },
+		description: { required }
+	}
+})
 
-// const handleChangeTags = (val) => {
-// 	tags.value = val
-// }
+const v$ = useVuelidate(rules, resume.projectStore.projectItem)
+
+const onAddProject = async() => {
+	const result = await v$.value.$validate()
+	if(result) {
+		resume.projectStore.addProjectData()
+		v$.value.$reset()
+	}
+}
+const onEditProject = async() => {
+	const result = await v$.value.$validate()
+	if(result) {
+		resume.projectStore.updateProjectData()
+		v$.value.$reset()
+	}
+}
+
 </script>

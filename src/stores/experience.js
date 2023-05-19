@@ -25,7 +25,7 @@ export const useExperienceStore = defineStore('experience', () => {
 				year: 2023
 			}
 		}
-	]);
+	])
 
 	const experienceForm = reactive({
 		id:  Date.now(),
@@ -44,33 +44,33 @@ export const useExperienceStore = defineStore('experience', () => {
 	})
 
 	function addExperienceData() {
-    experienceForms.unshift({ ...experienceForm, current: currentDate.value });
-    clearExperienceForm();
+    experienceForms.unshift({ ...experienceForm, current: currentDate.value })
+    clearExperienceForm()
   }
 
 	function editExperience(item) {
-    tabs.currentPage = PAGE_EXPERIENCE;
-    experienceForm.id = item.id;
-    experienceForm.role = item.role;
-    experienceForm.company = item.company;
-    experienceForm.description = item.description;
-    experienceForm.startDate.month = item.startDate.month;
-    experienceForm.startDate.year = item.startDate.year;
-    experienceForm.endDate.month = item.endDate.month;
-    experienceForm.endDate.year = item.endDate.year;
-    experienceForm.current = item.endDate.month === 0 && item.endDate.year === 0;
-    editData.value = true;
+    tabs.currentPage = PAGE_EXPERIENCE
+    experienceForm.id = item.id
+    experienceForm.role = item.role
+    experienceForm.company = item.company
+    experienceForm.description = item.description
+    experienceForm.startDate.month = item.startDate.month
+    experienceForm.startDate.year = item.startDate.year
+    experienceForm.endDate.month = item.endDate.month
+    experienceForm.endDate.year = item.endDate.year
+    experienceForm.current = item.endDate.month === 0 && item.endDate.year === 0
+    editData.value = true
   }
 
 	function updateExperienceData() {
-    const index = experienceForms.findIndex(exp => exp.id === experienceForm.id);
+    const index = experienceForms.findIndex(exp => exp.id === experienceForm.id)
     if (index !== -1) {
       experienceForms.splice(index, 1, {
         ...experienceForm,
         current: currentDate.value
-      });
-      clearExperienceForm();
-      editData.value = false;
+      })
+      clearExperienceForm()
+      editData.value = false
     }
   }
 
@@ -83,15 +83,15 @@ export const useExperienceStore = defineStore('experience', () => {
 	}
 
 	function clearExperienceForm() {
-    experienceForm.id = Date.now();
-    experienceForm.role = '';
-    experienceForm.company = '';
-    experienceForm.description = '';
-    experienceForm.startDate.month = 0;
-    experienceForm.startDate.year = 2023;
-    experienceForm.endDate.month = new Date().getMonth();
-    experienceForm.endDate.year = new Date().getFullYear();
-    experienceForm.current = false;
+    experienceForm.id = Date.now()
+    experienceForm.role = ''
+    experienceForm.company = ''
+    experienceForm.description = ''
+    experienceForm.startDate.month = 0
+    experienceForm.startDate.year = 2023
+    experienceForm.endDate.month = new Date().getMonth()
+    experienceForm.endDate.year = new Date().getFullYear()
+    experienceForm.current = false
   }
 
   return {
