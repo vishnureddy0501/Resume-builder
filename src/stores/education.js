@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { useTabsStore } from './tabs'
 import { PAGE_EDUCATION } from '../constans'
@@ -10,8 +10,9 @@ export const useEducationStore = defineStore('education', () => {
 
 	const editData = ref(false)
 
-	const educationsForm = ref([
+	const educationsForm = reactive([
 		{
+			id: 1,
 			name: 'U IT School',
 			degree: 'Lorem ipsum dolor sit',
 			startDate: {
@@ -25,7 +26,8 @@ export const useEducationStore = defineStore('education', () => {
 		}
 	])
 
-	const educationItem = ref({
+	const educationItem = reactive({
+		id: Date.now(),
 		name: '',
 		degree: '',
 		startDate: {
@@ -39,33 +41,28 @@ export const useEducationStore = defineStore('education', () => {
 	})
 
 	function addEducationData() {
-		educationsForm.value.unshift(educationItem.value)
-		educationItem.value = {
-			name: '',
-			degree: '',
-			startDate: {
-				month: 0,
-				year: 2023
-			},
-			endDate: {
-				month: new Date().getMonth(),
-				year: new Date().getFullYear()
-			}
-		}
+		educationsForm.unshift({...educationItem})
+		clearEducationForm()
 	}
 
 	function editEducation(item) {
 		tabs.currentPage = PAGE_EDUCATION
 		tabs.currentEducationTab = PAGE_EDUCATION
-		educationItem.value = item
+		educationItem.id = item.id
+		educationItem.name = item.name
+		educationItem.degree = item.degree
+		educationItem.startDate.month = item.startDate.month
+    educationItem.startDate.year = item.startDate.year
+    educationItem.endDate.month = item.endDate.month
+    educationItem.endDate.year = item.endDate.year
 		editData.value = true
 	}
 
 	function updateEducationData() {
-		const index = educationsForm.value.findIndex(exp => exp === educationItem.value)
+		const index = educationsForm.findIndex(exp => exp.id === educationItem.id)
 		if (index !== -1) {
-			educationsForm.value.splice(index, 1, educationItem.value)
-			educationItem.value = {
+			educationsForm.splice(index, 1, educationItem)
+			educationItem = {
 				name: '',
 				degree: '',
 				startDate: {
@@ -82,12 +79,22 @@ export const useEducationStore = defineStore('education', () => {
 	}
 
 	function deleteEducationData(deletedEducation) {
-		const index = educationsForm.value.findIndex(exp => exp === deletedEducation)
+		const index = educationsForm.findIndex(exp => exp === deletedEducation)
 		if (index !== -1) {
-			educationsForm.value.splice(index, 1)
+			educationsForm.splice(index, 1)
 			editData.value = false
 		}
 	}
+
+	function clearEducationForm() {
+    educationItem.id = Date.now()
+    educationItem.name = ''
+    educationItem.degree = ''
+    educationItem.startDate.month = 0
+    educationItem.startDate.year = 2023
+    educationItem.endDate.month = new Date().getMonth()
+    educationItem.endDate.year = new Date().getFullYear()
+  }
 
   return {
 		educationsForm,
