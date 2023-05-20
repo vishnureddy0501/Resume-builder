@@ -7,9 +7,9 @@
 		<div
 			v-for="(item, index) in resume.projectStore.projectData"
 			:key="index"
-			class="rounded bg-slate-200 p-2 text-justify relative display-hover hover:bg-slate-300 mb-3"
+			class="rounded bg-slate-200 p-2 text-justify relative group hover:bg-slate-300 mb-3"
 		>
-			<div class="hidden gap-2 absolute top-2 right-2 bg-slate-500 p-1 rounded display-hover__show">
+			<div class="hidden gap-2 absolute top-2 right-2 bg-slate-500 p-1 rounded group-hover:flex">
 				<PencilSquareIcon class="w-5 h-5 cursor-pointer fill-slate-100" @click="resume.projectStore.editProject(item)" />
 				<XCircleIcon class="w-5 h-5 cursor-pointer fill-slate-100" @click="resume.projectStore.deleteProjectData(item)" />
 			</div>
@@ -32,12 +32,3 @@ import { BugAntIcon } from '@heroicons/vue/24/outline'
 const resume = useResumeStore()
 
 </script>
-
-<style lang="scss">
-.display-hover {
-
-	&:hover &__show {
-		display: flex;
-	}
-}
-</style>
