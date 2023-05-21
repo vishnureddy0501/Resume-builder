@@ -61,19 +61,8 @@ export const useEducationStore = defineStore('education', () => {
 	function updateEducationData() {
 		const index = educationsForm.findIndex(exp => exp.id === educationItem.id)
 		if (index !== -1) {
-			educationsForm.splice(index, 1, educationItem)
-			educationItem = {
-				name: '',
-				degree: '',
-				startDate: {
-					month: 0,
-					year: 2023
-				},
-				endDate: {
-					month: new Date().getMonth(),
-					year: new Date().getFullYear()
-				}
-			}
+			educationsForm.splice(index, 1, { ...educationItem })
+			clearEducationForm()
 			editData.value = false
 		}
 	}
