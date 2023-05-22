@@ -12,15 +12,15 @@ export const useCourseStore = defineStore('course', () => {
 	const coursesForm = reactive([
 		{
 			id: 1,
-			name: 'U IT School',
-			degree: 'Lorem ipsum dolor sit',
+			name: 'Ukrainian IT School',
+			degree: 'Frontend Developer course JavaScript (110h)',
 			startDate: {
 				month: 4,
 				year: 2022
 			},
 			endDate: {
-				month: 3,
-				year: 2023
+				month: 7,
+				year: 2022
 			}
 		}
 	])

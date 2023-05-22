@@ -13,15 +13,15 @@ export const useEducationStore = defineStore('education', () => {
 	const educationsForm = reactive([
 		{
 			id: 1,
-			name: 'U IT School',
-			degree: 'Lorem ipsum dolor sit',
+			name: 'Master Degree',
+			degree: 'Department of Computer Science and Software Engineering',
 			startDate: {
-				month: 4,
-				year: 2022
+				month: 8,
+				year: 2017
 			},
 			endDate: {
-				month: 3,
-				year: 2023
+				month: 5,
+				year: 2022
 			}
 		}
 	])
