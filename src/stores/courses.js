@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { useTabsStore } from './tabs'
 import { PAGE_EDUCATION, COURSES } from '../constans'
@@ -9,8 +9,9 @@ export const useCourseStore = defineStore('course', () => {
 
 	const editData = ref(false)
 
-	const coursesForm = ref([
+	const coursesForm = reactive([
 		{
+			id: 1,
 			name: 'U IT School',
 			degree: 'Lorem ipsum dolor sit',
 			startDate: {
@@ -24,7 +25,8 @@ export const useCourseStore = defineStore('course', () => {
 		}
 	])
 
-	const courseItem = ref({
+	const courseItem = reactive({
+		id: Date.now(),
 		name: '',
 		degree: '',
 		startDate: {
@@ -38,55 +40,51 @@ export const useCourseStore = defineStore('course', () => {
 	})
 
 	function addCourseData() {
-		coursesForm.value.unshift(courseItem.value)
-		courseItem.value = {
-			name: '',
-			degree: '',
-			startDate: {
-				month: 0,
-				year: 2023
-			},
-			endDate: {
-				month: new Date().getMonth(),
-				year: new Date().getFullYear()
-			}
-		}
+		const newCourse = JSON.parse(JSON.stringify(courseItem))
+		coursesForm.unshift(newCourse)
+		clearCoursesForm()
 	}
 
 	function editCourse(item) {
 		tabs.currentPage = PAGE_EDUCATION
 		tabs.currentEducationTab = COURSES
-		courseItem.value = item
+		courseItem.id = item.id
+		courseItem.name = item.name
+		courseItem.degree = item.degree
+		courseItem.startDate.month = item.startDate.month
+    courseItem.startDate.year = item.startDate.year
+    courseItem.endDate.month = item.endDate.month
+    courseItem.endDate.year = item.endDate.year
 		editData.value = true
 	}
 
 	function updateCourseData() {
-		const index = coursesForm.value.findIndex(exp => exp === courseItem.value)
+		const index = coursesForm.findIndex(exp => exp.id === courseItem.id)
 		if (index !== -1) {
-			coursesForm.value.splice(index, 1, courseItem.value)
-			courseItem.value = {
-				name: '',
-				degree: '',
-				startDate: {
-					month: 0,
-					year: 2023
-				},
-				endDate: {
-					month: new Date().getMonth(),
-					year: new Date().getFullYear()
-				}
-			}
+			const updatedCourse = JSON.parse(JSON.stringify(courseItem))
+			coursesForm.splice(index, 1, updatedCourse)
+			clearCoursesForm()
 			editData.value = false
 		}
 	}
 
 	function deleteCourseData(deletedCourse) {
-		const index = coursesForm.value.findIndex(exp => exp === deletedCourse)
+		const index = coursesForm.findIndex(exp => exp === deletedCourse)
 		if (index !== -1) {
-			coursesForm.value.splice(index, 1)
+			coursesForm.splice(index, 1)
 			editData.value = false
 		}
 	}
+
+	function clearCoursesForm() {
+    courseItem.id = Date.now()
+    courseItem.name = ''
+    courseItem.degree = ''
+    courseItem.startDate.month = 0
+    courseItem.startDate.year = 2023
+    courseItem.endDate.month = new Date().getMonth()
+    courseItem.endDate.year = new Date().getFullYear()
+  }
 
   return {
 		coursesForm,

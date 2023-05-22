@@ -52,8 +52,8 @@
 			</div>
 
 			<div>
-				<button v-if="!resume.educationStore.editData" @click="onCheckForm(resume.educationStore.addEducationData)" class="global-btn">Add Education</button>
-				<button v-else class="global-btn" @click="onCheckForm(resume.educationStore.updateEducationData)">Edit</button>
+				<button v-if="!resume.educationStore.editData" @click="onCheckEducation(resume.educationStore.addEducationData)" class="global-btn">Add Education</button>
+				<button v-else class="global-btn" @click="onCheckEducation(resume.educationStore.updateEducationData)">Edit</button>
 			</div>
 		</div>
 
@@ -64,6 +64,9 @@
 					School Name:
 				</label>
 				<input v-model="resume.courseStore.courseItem.name" placeholder="School name" id="schoolNameCourse" type="text" class="px-3 py-1 basic-input">
+				<span v-for="error in b$.name.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+					{{ error.$message }}
+				</span>
 			</div>
 
 			<div class="mb-3">
@@ -72,6 +75,9 @@
 					Professional development, courses:
 				</label>
 				<input v-model="resume.courseStore.courseItem.degree" placeholder="Your courses" id="course" type="text" class="px-3 py-1 basic-input">
+				<span v-for="error in b$.degree.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+					{{ error.$message }}
+				</span>
 			</div>
 
 			<div class="mb-3">
@@ -90,8 +96,8 @@
 			</div>
 
 			<div>
-				<button v-if="!resume.courseStore.editData" @click="resume.courseStore.addCourseData()" class="global-btn">Add Course</button>
-				<button v-else class="global-btn" @click="resume.courseStore.updateCourseData()">Edit</button>
+				<button v-if="!resume.courseStore.editData" @click="onCheckCourses(resume.courseStore.addCourseData)" class="global-btn">Add Course</button>
+				<button v-else class="global-btn" @click="onCheckCourses(resume.courseStore.updateCourseData)">Edit</button>
 			</div>
 		</div>
 
@@ -120,12 +126,21 @@ const rules = computed(() => {
 })
 
 const v$ = useVuelidate(rules, resume.educationStore.educationItem)
+const b$ = useVuelidate(rules, resume.courseStore.courseItem)
 
-const onCheckForm = async(nameFunction) => {
+const onCheckEducation = async(nameFunction) => {
 	const result = await v$.value.$validate()
 	if(result) {
 		nameFunction()
 		v$.value.$reset()
+	}
+}
+
+const onCheckCourses = async(nameFunction) => {
+	const result = await b$.value.$validate()
+	if(result) {
+		nameFunction()
+		b$.value.$reset()
 	}
 }
 

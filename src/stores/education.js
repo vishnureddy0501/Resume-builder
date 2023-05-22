@@ -65,6 +65,7 @@ export const useEducationStore = defineStore('education', () => {
 			const updatedEducation = JSON.parse(JSON.stringify(educationItem))
 			educationsForm.splice(index, 1, updatedEducation)
 			clearEducationForm()
+			editData.value = false
 		}
 	}
 
