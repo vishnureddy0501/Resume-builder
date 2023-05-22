@@ -122,7 +122,6 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, resume.educationStore.educationItem)
 
 const onCheckForm = async(nameFunction) => {
-	console.log(nameFunction)
 	const result = await v$.value.$validate()
 	if(result) {
 		nameFunction()

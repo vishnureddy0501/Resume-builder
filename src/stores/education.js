@@ -41,7 +41,8 @@ export const useEducationStore = defineStore('education', () => {
 	})
 
 	function addEducationData() {
-		educationsForm.unshift({...educationItem})
+		const newEducation = JSON.parse(JSON.stringify(educationItem))
+		educationsForm.unshift(newEducation)
 		clearEducationForm()
 	}
 
@@ -61,9 +62,9 @@ export const useEducationStore = defineStore('education', () => {
 	function updateEducationData() {
 		const index = educationsForm.findIndex(exp => exp.id === educationItem.id)
 		if (index !== -1) {
-			educationsForm.splice(index, 1, { ...educationItem })
+			const updatedEducation = JSON.parse(JSON.stringify(educationItem))
+			educationsForm.splice(index, 1, updatedEducation)
 			clearEducationForm()
-			editData.value = false
 		}
 	}
 
