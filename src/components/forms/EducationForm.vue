@@ -20,6 +20,9 @@
 					School Name:
 				</label>
 				<input v-model="resume.educationStore.educationItem.name" placeholder="School name" id="schoolName" type="text" class="px-3 py-1 basic-input">
+				<span v-for="error in v$.name.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+					{{ error.$message }}
+				</span>
 			</div>
 
 			<div class="mb-3">
@@ -28,6 +31,9 @@
 					School degree:
 				</label>
 				<input v-model="resume.educationStore.educationItem.degree" placeholder="School degree" id="school" type="text" class="px-3 py-1 basic-input">
+				<span v-for="error in v$.degree.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
+					{{ error.$message }}
+				</span>
 			</div>
 
 			<div class="mb-3">
@@ -46,8 +52,8 @@
 			</div>
 
 			<div>
-				<button v-if="!resume.educationStore.editData" @click="resume.educationStore.addEducationData()" class="global-btn">Add Education</button>
-				<button v-else class="global-btn" @click="resume.educationStore.updateEducationData()">Edit</button>
+				<button v-if="!resume.educationStore.editData" @click="onCheckForm(resume.educationStore.addEducationData)" class="global-btn">Add Education</button>
+				<button v-else class="global-btn" @click="onCheckForm(resume.educationStore.updateEducationData)">Edit</button>
 			</div>
 		</div>
 
@@ -93,13 +99,35 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useResumeStore } from '@/stores/resume.js'
 import { AcademicCapIcon, BuildingLibraryIcon, CalendarIcon } from '@heroicons/vue/24/outline'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import { enGB } from 'date-fns/locale'
 import { EDUCATION_TABS, PAGE_EDUCATION } from '../../constans'
+import { useVuelidate } from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
 
 const resume = useResumeStore()
+
+// validation
+const rules = computed(() => {
+	return {
+		name: { required },
+		degree: { required }
+	}
+})
+
+const v$ = useVuelidate(rules, resume.educationStore.educationItem)
+
+const onCheckForm = async(nameFunction) => {
+	console.log(nameFunction)
+	const result = await v$.value.$validate()
+	if(result) {
+		nameFunction()
+		v$.value.$reset()
+	}
+}
 
 </script>
