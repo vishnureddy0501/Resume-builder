@@ -44,8 +44,15 @@ export const useExperienceStore = defineStore('experience', () => {
 	})
 
 	function addExperienceData() {
-    experienceForms.unshift({ ...experienceForm, current: currentDate.value })
-    clearExperienceForm()
+    // experienceForms.unshift({
+		// 	...experienceForm,
+		// 	current: currentDate.value
+		// })
+    // clearExperienceForm()
+		const newExperience = JSON.parse(JSON.stringify(experienceForm))
+		newExperience.current = currentDate.value
+		experienceForms.unshift(newExperience)
+		clearExperienceForm()
   }
 
 	function editExperience(item) {
@@ -65,12 +72,11 @@ export const useExperienceStore = defineStore('experience', () => {
 	function updateExperienceData() {
     const index = experienceForms.findIndex(exp => exp.id === experienceForm.id)
     if (index !== -1) {
-      experienceForms.splice(index, 1, {
-        ...experienceForm,
-        current: currentDate.value
-      })
-      clearExperienceForm()
-      editData.value = false
+			const updatedExperience = JSON.parse(JSON.stringify(experienceForm))
+			updatedExperience.current = currentDate.value
+			experienceForms.splice(index, 1, updatedExperience)
+			clearExperienceForm()
+			editData.value = false
     }
   }
 
