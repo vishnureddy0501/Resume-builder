@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-import TheFormResume from './components/TheFormResume.vue';
-import TheResume from './components/TheResume.vue';
-import TheHeader from './layouts/TheHeader.vue';
+import TheFormResume from './components/TheFormResume.vue'
+import TheResume from './components/TheResume.vue'
+import TheHeader from './layouts/TheHeader.vue'
 
 </script>
