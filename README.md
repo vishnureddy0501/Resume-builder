@@ -1,29 +1,28 @@
-# resume-vue-3
+# vue3-resume
+a live resume builder with [vueJs](http://vuejs.org)
 
-This template should help get you started developing with Vue 3 in Vite.
+## Demo
+ Go to https://grinch3214.github.io/resume-vue-3/
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+## Project setup
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
+### Compiles and hot-reloads for development
+```
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
+### Compiles and minifies for production
+```
 npm run build
 ```
+
+#### Dependencies
+those are some dependencies used on this project
+- data management : [pinia](https://pinia.vuejs.org)
+- validation     : [vuelidate](https://vuelidate-next.netlify.app/)
+- icons          : [heroicons](https://heroicons.com/)
+- date           : [vue3-datepicker](https://vue3datepicker.com/)
+- css framework   : [tailwindcss](https://tailwindcss.com/)
