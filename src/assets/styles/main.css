@@ -53,3 +53,18 @@ body .dp__action_button {
 .basic-input {
 	@apply border border-slate-900 rounded w-full focus:outline-none focus:shadow-border;
 }
+
+@media print {
+	@page {
+		margin: 0cm;
+	}
+	main {
+		padding-top: 0!important;
+	}
+	.hidden-print {
+		display: none;
+	}
+	.print {
+		display: flex;
+	}
+}
