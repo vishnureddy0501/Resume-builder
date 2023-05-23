@@ -21,6 +21,7 @@ export const SOCIAL_LIST = [
 ]
 
 export const LANGUAGES_LEVEL = [
+	{ value: null, text: 'Please select the level', disabled: true },
 	{ value: 'beginner', text: 'Beginner/Elementary' },
 	{ value: 'preIntermediate ', text: 'Pre-Intermediate ' },
 	{ value: 'intermediate ', text: 'Intermediate ' },

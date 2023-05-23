@@ -9,7 +9,7 @@ export const useMoreStore = defineStore('more', () => {
 		skills: ['HTML', 'CSS (SASS, SCSS, LESS)', 'JS'],
 		language: '',
 		interests: ['Sport (GYM)', 'Video Games'],
-		select: 'Please select the level',
+		select: null,
 		languageArr: [
 			{ name: 'Ukrainian', text: 'Fluent', value: 'fluent' },
 			{ name: 'English', text: 'Pre-Intermediate', value: 'preIntermediate' }
