@@ -11,7 +11,7 @@
         placeholder="What is your skills"
         @on-tags-changed="resume.moreStore.handleChangeSkills"
 				@on-remove="resume.infoStore.removeSkill"
-				class=" border border-slate-900 rounded w-full focus:outline-none focus:shadow-border"
+				class="basic-input"
 			/>
 		</div>
 
@@ -22,8 +22,14 @@
 			</label>
 			<div class="flex flex-row gap-4">
 				<div class="w-full">
-					<select v-model="resume.moreStore.moreForm.select" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
-						<option v-for="item in LANGUAGES_LEVEL" :key="item.value" :value="item.value" :disabled="item.disabled">{{ item.text }}</option>
+					<select v-model="resume.moreStore.moreForm.select" class="px-3 py-1 basic-input">
+						<option
+							v-for="item in LANGUAGES_LEVEL"
+							:key="item.value" :value="item.value"
+							:disabled="item.disabled"
+						>
+							{{ item.text }}
+						</option>
 					</select>
 					<span v-for="error in v$.select.$errors" :key="error.$uid" class="text-red-400 text-xs leading-3">
 						{{ error.$message }}
@@ -31,7 +37,7 @@
 				</div>
 				<div class="w-full">
 					<div class="relative">
-						<input v-model="resume.moreStore.moreForm.language" placeholder="Language" id="language" type="text" class="px-3 py-1 border border-slate-900 rounded w-full focus:outline-none focus:shadow-border">
+						<input v-model="resume.moreStore.moreForm.language" placeholder="Language" id="language" type="text" class="px-3 py-1 basic-input">
 						<button @click="onSubmit()" class="absolute top-0 right-0 h-full px-2 bg-slate-600 rounded-e">
 							<PlusIcon class="w-5 h-5 fill-white text-white" />
 						</button>
@@ -53,7 +59,7 @@
         placeholder="What are your interests"
         @on-tags-changed="resume.moreStore.handleChangeInterests"
 				@on-remove="resume.infoStore.removeInterest"
-				class=" border border-slate-900 rounded w-full focus:outline-none focus:shadow-border"
+				class="basic-input"
 			/>
 		</div>
 
