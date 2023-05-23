@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { useResumeStore } from '@/stores/resume';
+import { useResumeStore } from '@/stores/resume'
 import { WrenchIcon, LanguageIcon, PlusIcon, PuzzlePieceIcon } from '@heroicons/vue/24/outline'
 import Vue3TagsInput from 'vue3-tags-input'
 import { LANGUAGES_LEVEL } from '@/constans'
