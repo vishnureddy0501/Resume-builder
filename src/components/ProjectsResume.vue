@@ -1,7 +1,7 @@
 <template>
-	<div class="mb-6" v-if="resume.projectStore.projectData.length > 0">
-		<h2 class="text-slate-600 text-2xl font-semibold flex items-center gap-1 mb-2">
-			<BugAntIcon class="w-8 h-8" />
+	<div class="mb-4" v-if="resume.projectStore.projectData.length > 0">
+		<h2 class="text-slate-600 text-xl font-semibold flex items-center gap-1 mb-2">
+			<BugAntIcon class="w-7 h-7" />
 			Projects
 		</h2>
 		<div
@@ -17,7 +17,7 @@
 			<div>
 				<p class="mb-2">{{ item.description }}</p>
 				<ul class="flex flex-wrap gap-2">
-					<li v-for="(badge, i) in item.badges" :key="i" class="px-1 bg-slate-600 rounded text-white"> {{ badge }} </li>
+					<li v-for="(badge, i) in item.badges" :key="i" class="px-1 bg-slate-600 rounded text-white h-5 flex flex-column items-center"> {{ badge }} </li>
 				</ul>
 			</div>
 		</div>

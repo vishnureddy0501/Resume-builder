@@ -1,7 +1,7 @@
 <template>
-	<div class="mb-6" v-if="resume.experienceStore.experienceForms.length > 0">
-		<h2 class="text-slate-600 text-2xl font-semibold flex items-center gap-1 mb-2">
-			<ClipboardDocumentListIcon class="w-8 h-8" />
+	<div class="mb-4" v-if="resume.experienceStore.experienceForms.length > 0">
+		<h2 class="text-slate-600 text-xl font-semibold flex items-center gap-1 mb-2">
+			<ClipboardDocumentListIcon class="w-7 h-7" />
 			Experiences
 		</h2>
 		<div

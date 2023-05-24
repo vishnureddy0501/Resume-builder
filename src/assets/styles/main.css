@@ -13,12 +13,15 @@ input[type='number'] {
 }
 
 body .v3ti {
-	@apply border-slate-600;
+	@apply border-slate-600 h-8;
 }
 
 body .v3ti .v3ti-tag {
 	/* background: rgb(71,85,105); */
-	@apply bg-slate-600;
+	@apply bg-slate-600 h-6;
+}
+body .v3ti .v3ti-new-tag {
+	@apply h-6;
 }
 
 body .dp__input {
@@ -39,6 +42,9 @@ body .dp__input:hover {
 
 .dp__theme_light {
 	--dp-primary-color: rgb(71,85,105);
+}
+body .dp__input {
+	@apply text-sm;
 }
 
 body .dp__action_select {

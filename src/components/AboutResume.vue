@@ -1,7 +1,7 @@
 <template>
-	<div v-if="resume.infoStore.infoForm.aboutMe" class="mb-6">
-		<h2 class="text-slate-600 text-2xl font-semibold flex items-center gap-1 mb-2">
-			<PencilSquareIcon class="w-8 h-8 "/>
+	<div v-if="resume.infoStore.infoForm.aboutMe" class="mb-4">
+		<h2 class="text-slate-600 text-xl font-semibold flex items-center gap-1 mb-2">
+			<PencilSquareIcon class="w-7 h-7 "/>
 			Resume
 		</h2>
 		<div class="rounded bg-slate-200 p-2 text-justify relative group hover:bg-slate-300">
