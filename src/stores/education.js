@@ -1,7 +1,9 @@
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { useTabsStore } from './tabs'
 import { PAGE_EDUCATION } from '../constans'
+
+const LOCAL_STORAGE_KEY = PAGE_EDUCATION
 
 
 export const useEducationStore = defineStore('education', () => {
@@ -10,7 +12,7 @@ export const useEducationStore = defineStore('education', () => {
 
 	const editData = ref(false)
 
-	const educationsForm = reactive([
+	const educationsForm = reactive(getSavedData() || [
 		{
 			id: 1,
 			name: 'Master Degree',
@@ -25,6 +27,17 @@ export const useEducationStore = defineStore('education', () => {
 			}
 		}
 	])
+
+	watch(educationsForm, saveData, { deep: true })
+
+  function saveData() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(educationsForm))
+  }
+
+  function getSavedData() {
+    const data = localStorage.getItem(LOCAL_STORAGE_KEY)
+    return data ? JSON.parse(data) : null
+  }
 
 	const educationItem = reactive({
 		id: Date.now(),

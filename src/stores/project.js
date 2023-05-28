@@ -1,14 +1,16 @@
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { useTabsStore } from './tabs'
 import { PAGE_PROGECT } from '../constans'
+
+const LOCAL_STORAGE_KEY = PAGE_PROGECT
 
 
 export const useProjectStore = defineStore('project', () => {
 	const tabs = useTabsStore()
 
 	const editData = ref(false)
-	const projectData = reactive([
+	const projectData = reactive(getSavedData() || [
 		{
 			id: 1,
 			project: 'System Of Hir',
@@ -16,6 +18,17 @@ export const useProjectStore = defineStore('project', () => {
 			badges: ['HTML', 'SCSS','JS', 'Vue.js']
 		}
 	])
+
+	watch(projectData, saveData, { deep: true })
+
+  function saveData() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(projectData))
+  }
+
+  function getSavedData() {
+    const data = localStorage.getItem(LOCAL_STORAGE_KEY)
+    return data ? JSON.parse(data) : null
+  }
 
 	const projectItem = reactive({
 		id:  Date.now(),

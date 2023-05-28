@@ -1,11 +1,13 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { LANGUAGES_LEVEL } from '@/constans'
+
+const LOCAL_STORAGE_KEY = 'more'
 
 
 export const useMoreStore = defineStore('more', () => {
 
-	const moreForm = ref({
+	const moreForm = ref(getSavedData() || {
 		skills: ['HTML', 'CSS (SASS, SCSS, LESS)', 'JS'],
 		language: '',
 		interests: ['Sport (GYM)', 'Video Games'],
@@ -15,6 +17,17 @@ export const useMoreStore = defineStore('more', () => {
 			{ name: 'English', text: 'Pre-Intermediate', value: 'preIntermediate' }
 		]
 	})
+
+	watch(moreForm, saveData, { deep: true })
+
+  function saveData() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(moreForm.value))
+  }
+
+  function getSavedData() {
+    const data = localStorage.getItem(LOCAL_STORAGE_KEY)
+    return data ? JSON.parse(data) : null
+  }
 
 	const handleChangeInterests = (val) => {
 		moreForm.value.interests = val
