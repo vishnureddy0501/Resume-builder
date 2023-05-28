@@ -1,7 +1,9 @@
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { useTabsStore } from './tabs'
 import { PAGE_EXPERIENCE } from '../constans'
+
+const LOCAL_STORAGE_KEY = PAGE_EXPERIENCE
 
 
 export const useExperienceStore = defineStore('experience', () => {
@@ -10,7 +12,7 @@ export const useExperienceStore = defineStore('experience', () => {
 	const currentDate = ref(false)
 	const editData = ref(false)
 
-	const experienceForms = reactive([
+	const experienceForms = reactive(getSavedData() || [
 		{
 			id: 1,
 			role: 'FrontEnd Developer',
@@ -26,6 +28,17 @@ export const useExperienceStore = defineStore('experience', () => {
 			}
 		}
 	])
+
+	watch(experienceForms, saveData, { deep: true })
+
+  function saveData() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(experienceForms))
+  }
+
+  function getSavedData() {
+    const data = localStorage.getItem(LOCAL_STORAGE_KEY)
+    return data ? JSON.parse(data) : null
+  }
 
 	const experienceForm = reactive({
 		id:  Date.now(),
