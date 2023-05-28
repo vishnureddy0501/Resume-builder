@@ -5,22 +5,22 @@
 		<p class="text-slate-900 text-xl text-center mb-2 font-semibold">{{ resume.infoStore.infoForm.jobTitle }}</p>
 		<hr class="my-4 border-slate-500" />
 
-		<div v-if="resume.infoStore.infoForm.phone.length > 0" class="flex gap-2 items-center mb-3 leading-4">
+		<div v-if="resume.infoStore.infoForm.phone.length > 0" class="flex gap-2 items-center mb-2 leading-4">
 			<DevicePhoneMobileIcon class="w-4 h-4"/>
 			<a :href="`tel:+${resume.infoStore.infoForm.phone}`">+{{ formatNumber() }}</a>
 		</div>
-		<div v-if="resume.infoStore.infoForm.mail.length > 0" class="flex gap-2 items-center mb-3 leading-4">
+		<div v-if="resume.infoStore.infoForm.mail.length > 0" class="flex gap-2 items-center mb-2 leading-4">
 			<AtSymbolIcon class="w-4 h-4" />
 			<a :href="`mailto:${resume.infoStore.infoForm.mail}`">{{ resume.infoStore.infoForm.mail }}</a>
 		</div>
 		
 		<ul>
-			<li v-for="(item, inx) in resume.infoStore.infoForm.tags" :key="inx" class="mb-3 leading-4 relative group">
+			<li v-for="(item, inx) in resume.infoStore.infoForm.tags" :key="inx" class="mb-2 leading-4 relative group">
 				<XMarkIcon
 					@click="resume.infoStore.removeTag(item)"
 					class="w-4 h-4 cursor-pointer absolute top-0 right-0 hidden group-hover:block"
 				/>
-				<a  class="inline-flex gap-1 flex-row items-center" :href="`https://${item}`" target="_blank">
+				<a  class="inline-flex gap-2 flex-row items-center" :href="`https://${item}`" target="_blank">
 					<GlobeAltIcon class="w-4 h-4" />
 					{{ item }}
 				</a>
@@ -28,7 +28,7 @@
 		</ul>
 		
 		<ul>
-			<li v-for="item in resume.infoStore.infoForm.socialArr" :key="item.value" class="mb-3 leading-4 relative group">
+			<li v-for="item in resume.infoStore.infoForm.socialArr" :key="item.value" class="mb-2 leading-4 relative group">
 				<XMarkIcon
 					@click="resume.infoStore.removeSocialItem(item)"
 					class="w-4 h-4 cursor-pointer absolute top-0 right-0 hidden group-hover:block"
@@ -57,7 +57,7 @@
 			<li
 				v-for="(skill, inx) in resume.moreStore.moreForm.skills"
 				:key="inx"
-				class="font-semibold relative group"
+				class="font-semibold relative group mb-1"
 			>
 			<XMarkIcon
 				@click="resume.moreStore.removeSkill(skill)"
@@ -76,7 +76,7 @@
 			<li
 				v-for="(item, inx) in resume.moreStore.moreForm.languageArr"
 				:key="inx"
-				class="font-semibold relative group"
+				class="font-semibold relative group mb-1"
 			>
 			<XMarkIcon
 				@click="resume.moreStore.removeLang(item)"
@@ -95,7 +95,7 @@
 			<li
 				v-for="(item, inx) in resume.moreStore.moreForm.interests"
 				:key="inx"
-				class="font-semibold group relative"
+				class="font-semibold group relative mb-1"
 			>
 			<XMarkIcon
 				@click="resume.moreStore.removeInterest(item)"
