@@ -2,7 +2,7 @@
 	<div>
 		<ImagePreview />
 		<h2 class="text-3xl text-center mb-2 font-semibold">{{ resume.infoStore.infoForm.fullName }}</h2>
-		<p class="text-slate-900 text-2xl text-center mb-2 font-semibold">{{ resume.infoStore.infoForm.jobTitle }}</p>
+		<p class="text-slate-900 text-xl text-center mb-2 font-semibold">{{ resume.infoStore.infoForm.jobTitle }}</p>
 		<hr class="my-4 border-slate-500" />
 
 		<div v-if="resume.infoStore.infoForm.phone.length > 0" class="flex gap-2 items-center mb-3 leading-4">
