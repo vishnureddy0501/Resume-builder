@@ -31,3 +31,9 @@ export const LANGUAGES_LEVEL = [
 ]
 
 export const MONTH_ARRAY = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+export const THEMES = [
+  { theme: 'default', text: 'Default' },
+  { theme: 'cyan', text: 'Cyan' },
+  { theme: 'black', text: 'Black' }
+]

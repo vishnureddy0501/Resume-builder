@@ -1,6 +1,6 @@
 <template>
-  <div class="text-slate-600">
-    <select class="basic-input px-3 py-1" v-model="selectedTheme">
+  <div class="text-slate-600 text-xs">
+    <select class="basic-input py-1 cursor-pointer" v-model="selectedTheme">
       <option v-for="item in THEMES" :key="item.theme" :value="item.theme">{{ item.text }}</option>
     </select>
   </div>
@@ -8,12 +8,8 @@
 
 <script setup>
 import { ref, watch, onMounted } from 'vue'
+import { THEMES } from '../constans'
 
-const THEMES = [
-  { theme: 'default', text: 'Default' },
-  { theme: 'lime', text: 'Lime' },
-  { theme: 'black', text: 'Black' }
-]
 
 const selectedTheme = ref(localStorage.getItem('selectedTheme') || THEMES[0].theme)
 
