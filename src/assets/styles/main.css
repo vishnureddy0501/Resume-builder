@@ -18,6 +18,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--main-bg-700: rgb(51 65 85);
+	--main-bg-600: rgb(71 85 105);
+	--main-bg-400: rgb(148 163 184);
+	--main-bg-200: rgb(226 232 240);
+	--main-bg-300: rgb(203 213 225);
+	--main-border-color-600: rgb(71 85 105);
+	--main-text-color-900: rgb(15 23 42);
+	--main-text-color-600: rgb(71 85 105);
+}
+/* lime theme */
+.lime .bg-slate-600 {
+	--main-bg-600: rgb(147 51 234 );
+	background-color: var(--main-bg-600);
+	/* @apply bg-purple-600 */
+}
+
+
 html, body {
 	font-family: 'Montserrat';
 }
@@ -61,7 +79,7 @@ body .dp__input:hover {
 }
 
 .dp__theme_light {
-	--dp-primary-color: rgb(71,85,105);
+	--dp-primary-color: var(--main-bg-600);
 }
 body .dp__input {
 	@apply text-sm;

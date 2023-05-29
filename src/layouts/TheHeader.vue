@@ -4,13 +4,12 @@
 			<FireIcon class="h-10 w-10" />
 			Vue CV constructor
 		</a>
-		<div>
-			Here links mb or lang
-		</div>
+		<SelectLanguage />
 	</header>
 </template>
 
 <script setup>
 import { FireIcon } from '@heroicons/vue/24/solid'
+import SelectLanguage from '../components/SelectLanguage.vue';
 
 </script>
