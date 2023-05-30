@@ -53,6 +53,11 @@ html, body {
 	background-color: var(--main-bg-300);
 }
 
+.cyan .hover\:bg-slate-700:hover {
+	--main-bg-700: #0e7490;
+	background-color: var(--main-bg-700);
+}
+
 .cyan .border-slate-600 {
 	--main-border-color-600: #164e63;
 	border-color: var(--main-border-color-600);
