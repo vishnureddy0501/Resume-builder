@@ -13,6 +13,7 @@ import { THEMES } from '../constans'
 
 const selectedTheme = ref(localStorage.getItem('selectedTheme') || THEMES[0].theme)
 
+
 watch(selectedTheme, (newVal) => {
   document.documentElement.classList.remove(...THEMES.map(item => item.theme))
   document.documentElement.classList.add(newVal)

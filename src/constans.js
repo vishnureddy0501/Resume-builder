@@ -35,5 +35,5 @@ export const MONTH_ARRAY = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Au
 export const THEMES = [
   { theme: 'default', text: 'Default' },
   { theme: 'cyan', text: 'Cyan' },
-  { theme: 'black', text: 'Black' }
+  { theme: 'dark', text: 'Dark' }
 ]
