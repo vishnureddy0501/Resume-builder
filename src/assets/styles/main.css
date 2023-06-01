@@ -171,7 +171,7 @@ input[type='number'] {
 }
 
 body .v3ti {
-	@apply border-slate-600 h-8;
+	@apply border-slate-600;
 }
 
 body .v3ti .v3ti-tag {
