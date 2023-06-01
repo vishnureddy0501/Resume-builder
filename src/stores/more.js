@@ -8,7 +8,7 @@ const LOCAL_STORAGE_KEY = 'more'
 export const useMoreStore = defineStore('more', () => {
 
 	const moreForm = ref(getSavedData() || {
-		skills: ['HTML', 'CSS (SASS, SCSS, LESS)', 'JS'],
+		skills: ['HTML', 'CSS (SASS, SCSS, LESS)', 'Bootstrap', 'JavaScript', 'TypeScript', 'React.js', 'Redux'],
 		language: '',
 		interests: ['Sport (GYM)', 'Video Games'],
 		select: null,

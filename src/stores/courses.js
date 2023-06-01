@@ -14,14 +14,14 @@ export const useCourseStore = defineStore('course', () => {
 	const coursesForm = reactive(getSavedData() || [
 		{
 			id: 1,
-			name: 'Ukrainian IT School',
-			degree: 'Frontend Developer course JavaScript (110h)',
+			name: 'Hillel IT School',
+			degree: 'Frontend Developer course (110h)',
 			startDate: {
-				month: 4,
+				month: 6,
 				year: 2022
 			},
 			endDate: {
-				month: 7,
+				month: 10,
 				year: 2022
 			}
 		}

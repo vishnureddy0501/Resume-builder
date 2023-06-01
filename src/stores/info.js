@@ -11,7 +11,7 @@ export const useInfoStore = defineStore('info', () => {
 		fullName: 'John Smith',
 		jobTitle: 'Front-End developer',
 		phone: '380930001122',
-		mail: 'test@gmail.com',
+		mail: 'youremail@gmail.com',
 		tags: ['secondsite.com'],
 		select: null,
 		socialMedia: '',

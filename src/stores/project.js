@@ -13,9 +13,9 @@ export const useProjectStore = defineStore('project', () => {
 	const projectData = reactive(getSavedData() || [
 		{
 			id: 1,
-			project: 'System Of Hir',
-			description: ' Used Vue.js to implement a job search platform for developers and make it easier for recruiters to find candidates. The main work was carried out on a dashboard for personal accounts of job seekers and employers.',
-			badges: ['HTML', 'SCSS','JS', 'Vue.js']
+			project: 'Resume Builder',
+			description: 'Used JavaScript to implement the "Resume Builder". The main work was to learn more about the principles of working with JavaScript. During the practice, the following functionality was implemented: adding fields, deleting fields, editing fields, validation, ets',
+			badges: ['HTML', 'CSS','JavaScript', 'Vite', 'Tailwind']
 		}
 	])
 

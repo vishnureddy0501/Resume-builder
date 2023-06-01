@@ -16,16 +16,17 @@ export const useExperienceStore = defineStore('experience', () => {
 		{
 			id: 1,
 			role: 'FrontEnd Developer',
-			company: 'Company Name',
-			description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit accusantium blanditiis, pariatur consequuntur cumque, veniam rerum reiciendis modi dignissimos ullam beatae saepe quos delectus ratione ad perferendis veritatis quod ipsa.',
+			company: 'OnePlusOne Solutions',
+			description: 'Developing: A website for wedding services with the chat and catalog / Multilingual website / Online shop / Implementing sockets and writing functionality / Interaction with PM, designers and other developers about the functionality and design of components / Making edits to existing projects / Layout of online stores, landing pages, multi-pages, sites with a small number of animations,	platforms with graphs',
 			startDate: {
-				month: 4,
+				month: 11,
 				year: 2022
 			},
 			endDate: {
-				month: 3,
+				month: 5,
 				year: 2023
-			}
+			},
+			current: true
 		}
 	])
 
